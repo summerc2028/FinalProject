@@ -1,4 +1,7 @@
 FinalProject::Application.routes.draw do
+  get "users/new"
+  get "users/show"
+  get "users/create"
   root "static_pages#home"
   match "/help", to: "static_pages#help", via: "get"
 

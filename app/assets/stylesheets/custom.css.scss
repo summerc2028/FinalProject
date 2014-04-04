@@ -1,5 +1,8 @@
-@import "modal";
+@import "bootstrap";
 
-.modal--show {
-  @extend %modal;
+.ribbon {
+  height: 200px;
+  background-color: #049cdb;
+  margin-top: -20px;
+  border: 10px black;
 }

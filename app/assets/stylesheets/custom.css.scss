@@ -1,10 +1,17 @@
 @import "bootstrap";
+//@import "bootstrap-responsive";
+
+$accent-color: blue;
+
+.navbar {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 .ribbon {
   height: 200px;
-  background-color: #049cdb;
+  background-color: $accent-color;
   margin-top: -20px;
-  border: 10px black;
 }
 
 #Carousel{

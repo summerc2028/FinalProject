@@ -8,7 +8,11 @@
 }
 
 #Carousel{
-	height:400px;
-	width:600px;
+	height: 400px;
+	width: 100%;
 	margin: auto;
+  img {
+    margin: auto;
+    text-align: center;
+  }
 }

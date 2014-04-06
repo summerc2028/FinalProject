@@ -1,9 +1,11 @@
 FinalProject::Application.routes.draw do
-  get "users/new"
+  match "/signup", to: "users#new", via: "get"
   get "users/show"
   get "users/create"
   root "static_pages#home"
   match "/help", to: "static_pages#help", via: "get"
+
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

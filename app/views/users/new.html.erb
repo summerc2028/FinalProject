@@ -6,8 +6,13 @@
       <h1>Sign Up</h1>
       <%= form_for(@user) do |f| %>
 
+        <%= render 'application/error_messages' %>
+
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "form-control" %>
 
         <%= f.label :email %>
         <%= f.text_field :email, class: "form-control" %>

@@ -1,8 +1,6 @@
 @import "bootstrap";
 //@import "bootstrap-responsive";
 
-$accent-color: blue;
-
 .navbar {
   padding-left: 20px;
   padding-right: 20px;
@@ -12,9 +10,18 @@ $accent-color: blue;
   margin: 20px;
 }
 
+.form-control {
+  margin-bottom: 10px;
+}
+
+.modal-title {
+  font-size: 2em;
+}
+
+/* Root */
 .ribbon {
   height: 200px;
-  background-color: $accent-color;
+  background-color: $brand-primary;
   margin-top: -20px;
 }
 

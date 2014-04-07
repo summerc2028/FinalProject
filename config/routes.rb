@@ -1,4 +1,8 @@
 FinalProject::Application.routes.draw do
+  get "sessions/new"
+  match "/sessions", to: "sessions#create", via: "get"
+  get "sessions/destroy"
+  match "/sessions", to: "sessions#create", via: "post"
   match "/signup", to: "users#new", via: "get"
   get "users/show"
   get "users/create"

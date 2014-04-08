@@ -11,7 +11,8 @@
   <%= render 'application/header' %>
   <%= render 'application/flash' %>
 
-<%= yield %>
+  <%= yield %>
 
+  <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

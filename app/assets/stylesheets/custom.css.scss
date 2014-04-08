@@ -1,4 +1,11 @@
+$brand-primary: #7ADE00;
+
 @import "bootstrap";
+
+h1 {
+  color: white;
+  font-size: 6em;
+}
 
 .navbar {
   padding-left: 20px;

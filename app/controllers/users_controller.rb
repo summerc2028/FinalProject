@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Account Successfully Created!"
-      redirect_to @user
+      redirect_to usernames_path(@user.username)
     else
       render 'new'
     end

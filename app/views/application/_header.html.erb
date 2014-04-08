@@ -17,8 +17,22 @@
         <li class="<%=is_active 'help'%>"><%= link_to "Help", help_path %></li>
         <li><a href="#">Link</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right" action="http://google.com">
-        <li><button type="submit" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#sign-in-modal">Sign In</button></li>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- Signin/Account Buttons -->
+        <% if signed_in? %>
+          <button type="button" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown">
+            Account <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sign Out</a></li>
+          </ul>
+        <% else %>
+          <li><button type="submit" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#sign-in-modal">Sign In</button></li>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -53,7 +67,7 @@
           <%= submit_tag "Sign In", class: "btn btn-primary" %>
         </div>
       <% end %>
-      
+
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { minimum: 6 }, uniqueness: { case_sensitive: false}
 	has_secure_password
 	validates :password, length: { minimum: 8 }
-	before_create { generate_token :auth_token }
+	before_create :generate_token
 
 	private
 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
 		def generate_token
 			begin
-				self[column] = User.new_auth_token
-			end while User.exists?(column => self[column])
+				self.auth_token = User.new_auth_token
+			end while User.exists?(auth_token: self.auth_token)
 		end
 end

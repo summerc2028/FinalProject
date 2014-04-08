@@ -1,10 +1,11 @@
 FinalProject::Application.routes.draw do
-  resources :users
+  resources :users, except: [:show]
   resources :sessions, only: [:new, :create, :destroy]
+  match "/users/:username", to: "users#show", via: "get"
   match "/signin", to: "sessions#new", via: "get"
   match "/signout", to: "sessions#destroy", via: "delete"
   match "/signup", to: "users#new", via: "get"
-  
+
   root "static_pages#home"
   match "/help", to: "static_pages#help", via: "get"
 

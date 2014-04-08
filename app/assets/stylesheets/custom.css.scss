@@ -1,9 +1,14 @@
 $brand-primary: #7ADE00;
+$off-white: #DADADA;
 
 @import "bootstrap";
 
+body {
+  background-color: $off-white;
+}
+
 h1 {
-  color: white;
+  //color: $off-white;
   font-size: 6em;
 }
 
@@ -32,8 +37,6 @@ h1 {
 }
 
 #Carousel{
-	height: 400px;
-	width: 100%;
 	margin: auto;
   img {
     margin: auto;

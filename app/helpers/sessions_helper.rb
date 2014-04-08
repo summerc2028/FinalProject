@@ -1,8 +1,12 @@
 module SessionsHelper
 
-  def sign_in(user)
+  def sign_in(user, remember)
     auth_token = User.new_auth_token
-    cookies.permanent[:auth_token] = auth_token
+    if remember
+      cookies.permanent[:auth_token] = auth_token
+    else
+      cookies[:auth_token] = auth_token
+    end
     self.current_user = user
   end
 
@@ -15,7 +19,6 @@ module SessionsHelper
   end
 
   def current_user
-    auth_token = cookies[:auth_token]
-    @current_user ||= User.find_by_auth_token auth_token
+    @current_user ||= User.find_by_auth_token cookies[:auth_token] if cookies[:auth_token]
   end
 end

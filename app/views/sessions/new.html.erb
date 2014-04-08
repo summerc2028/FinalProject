@@ -12,6 +12,11 @@
         <%= label_tag :password %>
         <%= password_field_tag :password, nil, class: "form-control" %>
 
+        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+        <%= label_tag :remember_me %>
+
+        <hr />
+
         <%= submit_tag "Sign In", class: "btn btn-primary" %>
 
       <% end %>

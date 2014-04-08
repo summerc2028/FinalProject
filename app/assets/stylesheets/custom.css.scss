@@ -1,10 +1,15 @@
 $brand-primary: #7ADE00;
+$off-white: #DADADA;
 
 @import "bootstrap";
 //@import "bootstrap-responsive";
 
+body {
+  background-color: $off-white;
+}
+
 h1 {
-  color: white;
+  color: $off-white;
   font-size: 6em;
 }
 

@@ -1,4 +1,36 @@
-<h2>Good Day, <%= @user.name %></h2>
-<p><%= @user.email %></p>
-<%= gravatar_for(@user) %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-4 text-right">
+			<h1>Good Day, <%= @user.name %></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
+			<%= gravatar_for(@user) %>
+		</div>
+		<div class="col-xs-4 col-xs-offset-4 text-right">
+			<p><%= @user.email %></p>
+		</div>
+	</div>
+	<div class="row">
+		<br />
+		<div class="col-xs-2">
+			<ul class="nav nav-pills nav-stacked">
+				<li class="text-center"><a>Calendar</a></li>
+				<li class="text-center"><a>Another Button</a></li>
+				<li class="text-center"><a>Another Button</a></li>
+				<li class="text-center"><a>Another Button</a></li>
+				<li class="text-center"><a>Another Button</a></li>
+				<li class="text-center"><a>Another Button</a></li>
+			</ul>
+		</div>
+		<div class="col-xs-4 col-xs-offset-2">
+			<p>We can place Information here</p>
+			<p>This will All look better once i have more to put in here!!</p>
+		</div>
+		<div class="col-xs-4">
+			<p>We can place Information here</p>
+		</div>
+	</div>
+</div>
 

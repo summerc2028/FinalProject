@@ -1,8 +1,12 @@
+/* Scaffolding */
 $brand-primary: #7ADE00;
+$off-black: #333;
 $off-white: #DADADA;
 
+/* Bootstrap-Sass */
 @import "bootstrap";
 
+/* Overrides */
 body {
   background-color: $off-white;
 }
@@ -34,12 +38,16 @@ h1 {
   height: 200px;
   background-color: $brand-primary;
   margin-top: -20px;
+  border-bottom: 40px double $off-black;
 }
 
 #Carousel{
 	margin: auto;
+  border-bottom: 20px solid $off-black;
   img {
     margin: auto;
     text-align: center;
+    width: 100%;
+    max-height: 400px;
   }
 }

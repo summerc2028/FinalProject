@@ -8,8 +8,28 @@
 
         <%= render 'application/error_messages' %>
 
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.label :fname, "First Name" %>
+        <%= f.text_field :fname, class: "form-control" %>
+
+        <%= f.label :lname, "Last Name" %>
+        <%= f.text_field :lname, class: "form-control" %>
+
+        <%= f.label :gender %>
+        <div class="radio">
+          <label>
+            <%= f.radio_button :gender, "Male" %>
+            Male
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <%= f.radio_button :gender, "Female" %>
+            Female
+          </label>
+        </div>
+
+        <%= f.label :birthdate %>
+        <%= f.date_field :birthdate %>
 
         <%= f.label :username %>
         <%= f.text_field :username, class: "form-control" %>

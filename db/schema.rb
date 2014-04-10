@@ -11,16 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407213224) do
+ActiveRecord::Schema.define(version: 20140410213812) do
 
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
     t.string   "email"
     t.string   "auth_token"
+    t.string   "gender"
+    t.date     "birthdate"
+    t.integer  "height"
+    t.integer  "weight"
+    t.string   "status"
+    t.string   "fname"
+    t.string   "lname"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true

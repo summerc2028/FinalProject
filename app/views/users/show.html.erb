@@ -1,14 +1,10 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-3 text-right">
-			<h1>Good Day, <%= @user.name %></h1>
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-xs-2 text-center">
 			<%= gravatar_for(@user) %>
 		</div>
-		<div class="col-xs-3 col-xs-offset-6 text-right">
+		<div class="col-xs-6 col-xs-offset-3 text-right">
+			<h1>Good Day, <%= @user.name %></h1>
 			<p><%= @user.email %></p>
 		</div>
 	</div>

@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        fname: "First name"
+        lname: "Last name"
+    errors:
+      models:
+        user:
+          attributes:
+            birthdate:
+              invalid_date: 'must be on or before today'

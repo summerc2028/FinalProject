@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	validates :weight, numericality: { only_integer: true }, allow_nil: true
 	VALID_GENDER_REGEX = /\A(Male)|(Female)\z/
 	validates :gender, format: { with: VALID_GENDER_REGEX }, allow_nil: true
-	validates :birthdate, timeliness: { on_or_before: lambda { Date.current }, type: :date }, allow_nil: true
+	validates_date :birthdate, on_or_before: :today, allow_nil: true
 	validates :status, length: { maximum: 140 }, allow_nil: true
 	has_secure_password
 	validates :password, length: { minimum: 8 }

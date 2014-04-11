@@ -1,7 +1,9 @@
 /* Scaffolding */
 $brand-primary: #7ADE00;
 $off-black: #333;
-$off-white: #DADADA;
+$off-white: #eAeAeA;
+$border-radius-base: 0px;
+$input-border-focus: $brand-primary;
 
 /* Bootstrap-Sass */
 @import "bootstrap";
@@ -10,6 +12,7 @@ $off-white: #DADADA;
 body {
   background-color: $off-white;
   overflow-x:hidden;
+  padding-top: 30px;
 }
 
 h1 {
@@ -27,7 +30,7 @@ h1 {
   margin: 20px;
 }
 
-.form-control {
+.form-control, .input-group {
   margin-bottom: 10px;
 }
 

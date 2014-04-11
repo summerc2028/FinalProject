@@ -26,9 +26,11 @@ FinalProject::Application.routes.draw do
 
   #Foods
   resources :foods, only: [:new, :create, :show, :index, :destroy]
+  match
 
   #Exercises
   resources :exercises, only: [:new, :create, :show, :index, :destroy]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

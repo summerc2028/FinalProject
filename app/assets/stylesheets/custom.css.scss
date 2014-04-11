@@ -20,6 +20,7 @@ h1 {
 .navbar {
   padding-left: 20px;
   padding-right: 20px;
+  margin-bottom: 0px;
 }
 
 .alert {
@@ -34,11 +35,14 @@ h1 {
   font-size: 2em;
 }
 
+.radio {
+  margin-top: 0px;
+}
+
 /* Root */
 .ribbon {
   height: 200px;
   background-color: $brand-primary;
-  margin-top: -20px;
   border-bottom: 40px double $off-black;
 }
 

@@ -46,9 +46,15 @@ ActiveRecord::Schema.define(version: 20140410222301) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
     t.string   "email"
     t.string   "auth_token"
+    t.string   "gender"
+    t.date     "birthdate"
+    t.integer  "height"
+    t.integer  "weight"
+    t.string   "status"
+    t.string   "fname"
+    t.string   "lname"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true

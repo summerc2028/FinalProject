@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks' #linking all the stylesheets & javascript
 gem 'jbuilder', '~> 1.2' #used for testing
 gem 'bootstrap-sass'
+gem 'validates_timeliness', '~> 3.0'
 
 group :doc do
   gem 'sdoc', require: false

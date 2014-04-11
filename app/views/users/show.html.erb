@@ -1,6 +1,11 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-2 text-center">
+		<div class="col-xs-8 col-xs-offset-4 text-right">
+			<h1>Good Day, <%= @user.fname %></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4">
 			<%= gravatar_for(@user) %>
 		</div>
 		<div class="col-xs-6 col-xs-offset-3 text-right">
@@ -27,4 +32,3 @@
 	</div>
 	<h2>This is going to link to the database and pull information from there</h2>
 </div>
-

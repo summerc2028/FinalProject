@@ -1,2 +1,27 @@
-<h1>Foods#new</h1>
-<p>Find me in app/views/foods/new.html.erb</p>
+<% provide(:title, 'Foods info') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Food Information</h1>
+      <%= form_for(@food) do |f| %>
+
+        <%= render 'application/food_error_messages' %>
+
+        <%= f.label :name, "What did you eat?"%>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :day, "Which day?"%>
+        <%= f.text_field :day, class: "form-control" %>
+
+        <%= f.label :time, "What time?"%>
+        <%= f.text_field :time, class: "form-control" %>
+
+        <%= f.label :calories %>
+        <%= f.text_field :calories, class: "form-control" %>
+
+        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-acc" %>
+      <% end %>
+    </div>
+  </div>
+</div>

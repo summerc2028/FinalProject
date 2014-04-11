@@ -6,7 +6,7 @@
       <h1>Sign Up</h1>
       <%= form_for(@user) do |f| %>
 
-        <%= render 'application/error_messages' %>
+        <%= render 'application/user_error_messages' %>
 
         <%= f.label :fname, "First Name" %>
         <%= f.text_field :fname, class: "form-control" %>

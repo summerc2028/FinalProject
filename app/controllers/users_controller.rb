@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
+    # params[:birthdate] = Date.strptime(params[:birthdate], "%m-%d-%Y") if params[:birthdate]
     params.require(:user).permit( :fname, :lname, :username, :email, :password, :password_confirmation, :gender, :birthdate, :height, :weight, :status)
   end
 

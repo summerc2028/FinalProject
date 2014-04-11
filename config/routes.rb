@@ -1,5 +1,15 @@
 FinalProject::Application.routes.draw do
 
+  get "exercises/new"
+  get "exercises/create"
+  get "exercises/destroy"
+  get "exercises/update"
+  get "exercises/index"
+  get "foods/new"
+  get "foods/create"
+  get "foods/destroy"
+  get "foods/update"
+  get "foods/index"
   # Users
   resources :users, except: [:show]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
@@ -13,6 +23,12 @@ FinalProject::Application.routes.draw do
   # Static
   root "static_pages#home"
   match "/help", to: "static_pages#help", via: "get"
+
+  #Foods
+  resources :foods, only: [:new, :create, :show, :index, :destroy]
+
+  #Exercises
+  resources :excercises, only: [:new, :create, :show, :index, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

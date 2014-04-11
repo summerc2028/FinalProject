@@ -4,5 +4,9 @@
 
 $( document ).ready(function() {
 
-  $( "#dp3" ).datepicker();
+  $( "#dp3" ).datepicker({
+    endDate: new Date(),
+    startView: "decade"
+  });
+
 });

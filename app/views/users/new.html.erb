@@ -29,7 +29,26 @@
         </div>
 
         <%= f.label :birthdate %>
-        <%= f.date_field :birthdate %>
+        <div class="form-group row">
+          <div class="col-xs-4">
+            <div class="input-group date" id="dp3" data-date-format="mm/dd/yyyy">
+              <%= f.text_field :birthdate, class: "form-control", readonly: true %>
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <%= f.label :height %>
+        <div class="input-group">
+          <%= f.text_field :height, class: "form-control" %>
+          <span class="input-group-addon">Inches</span>
+        </div>
+
+        <%= f.label :weight %>
+        <div class="input-group">
+          <%= f.text_field :weight, class: "form-control" %>
+          <span class="input-group-addon">Pounds</span>
+        </div>
 
         <%= f.label :username %>
         <%= f.text_field :username, class: "form-control" %>

@@ -10,9 +10,11 @@ FinalProject::Application.routes.draw do
   get "foods/destroy"
   get "foods/update"
   get "foods/index"
+
   # Users
-  resources :users, except: [:show]
+  resources :users, except: [:show, :update]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
+  match "/users/:username", to: "users#update", via: "patch", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
 
   # Sessions

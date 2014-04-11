@@ -1,6 +1,8 @@
- <div class="container-fluid">
+<% provide(:title, "#{@user.fname} #{@user.lname}") %>
+
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-2">
+		<div class="col-xs-9 col-xs-offset-2">
 			<%= render 'application/flash' %>
 		</div>
 	</div>
@@ -17,17 +19,40 @@
     <div class="col-xs-9 col-xs-offset-2 main">
       <h1 class="page-header">Good Day, <%= @user.fname %></h1>
 			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Status
+					</h3>
+				</div>
+				<div class="panel-body">
+					<%= @user.status %>
+					<hr>
+					<%= form_for(@user) do |f| %>
+
+						<%= f.text_field :status, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
+
+						<%= f.submit "Post", class: "btn btn-primary" %>
+
+					<% end %>
+				</div>
+			</div>
+			<%= render 'application/error_messages' %>
+			<div class="panel panel-primary">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">
 						About
-						<button type="button" class="btn btn-default">
+						<button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</button>
 					</h3>
 			  </div>
-			  <div class="panel-body">
-			    Panel content
-			  </div>
+				<ul class="list-group">
+			    <li class="list-group-item"><b>Name:</b> <%= "#{@user.fname} #{@user.lname}" %></li>
+			    <li class="list-group-item"><b>Gender:</b> <%= @user.gender %></li>
+			    <li class="list-group-item"><b>Date of Birth:</b> <%= @user.birthdate %></li>
+			    <li class="list-group-item"><b>Height:</b> <%= @user.height %> Inches</li>
+			    <li class="list-group-item"><b>Weight:</b> <%= @user.weight %> Pounds</li>
+			  </ul>
 			</div>
 		</div>
 	</div>

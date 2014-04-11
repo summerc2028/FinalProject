@@ -18,6 +18,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find_by_id(params[:username])
+    @user.update_attributes(user_params)
+    if @user.save
+      redirect_to update_usernames_path(@user.username)
+    else
+      flash.now[:danger] = "Error: Failed to update status"
+      render 'show'
+    end
+  end
+
   private
 
   def user_params

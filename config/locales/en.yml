@@ -31,3 +31,4 @@ en:
           attributes:
             birthdate:
               invalid_date: 'must be on or before today'
+              on_or_before: 'must be on or before today'

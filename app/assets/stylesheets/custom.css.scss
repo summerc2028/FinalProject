@@ -1,9 +1,15 @@
-/* Scaffolding */
+/* Variables & Mixins */
 $brand-primary: #7ADE00;
 $off-black: #333;
-$off-white: #eAeAeA;
+$off-white: #EDEDED;
 $border-radius-base: 0px;
 $input-border-focus: $brand-primary;
+
+@mixin angled-corners {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
 
 /* Bootstrap-Sass */
 @import "bootstrap";
@@ -12,7 +18,7 @@ $input-border-focus: $brand-primary;
 body {
   background-color: $off-white;
   overflow-x:hidden;
-  padding-top: 30px;
+  padding-top: 51px;
 }
 
 h1 {
@@ -40,6 +46,10 @@ h1 {
 
 .radio {
   margin-top: 0px;
+}
+
+.modal-content {
+  @include angled-corners;
 }
 
 /* Root */

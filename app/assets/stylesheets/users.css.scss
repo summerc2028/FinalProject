@@ -17,22 +17,27 @@
 }
 
 .nav-sidebar {
-  background-color: #7ADE00;
-  border-right: 5px solid #7ADE00;
+  background-color: $brand-primary;
+  border-right: 5px solid $brand-primary;
   padding-right: 0px;
   min-height: 100%;
   margin-top: -20px;
 }
 
-li.active {
-  background-color: #EAEAEA;
+.nav-sidebar li.active {
+  background-color: $off-white;
   a {
-    color: #7ADE00;
+    color: $brand-primary;
   }
 }
 
-a {
-  color: #EDEDED;
+.nav-sidebar li a {
+  color: $off-white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  &:hover {
+    color: $brand-primary;
+  }
 }
 
 .nav-sidebar.affix {
@@ -43,4 +48,11 @@ a {
 
 .main {
   padding-left: 20px;
+}
+
+.panel-title {
+  font-size: 2em;
+  button {
+    float: right;
+  }
 }

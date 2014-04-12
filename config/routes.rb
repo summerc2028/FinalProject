@@ -39,9 +39,9 @@ FinalProject::Application.routes.draw do
 
   #Activities
   resources :activites, only: [:new, :create, :show, :index, :destroy]
-  match "/users/:username/enter_activity", to: "activity#new" via: "get"
-  match "/users/:username/remove_activity", to: "activity#destory" via: "delete"
-  match "/users/:username/update_activity", to: "activity#update" via: "get"
+  match "/users/:username/enter_activity", to: "activity#new", via: "get"
+  match "/users/:username/remove_activity", to: "activity#destory", via: "delete"
+  match "/users/:username/update_activity", to: "activity#update", via: "get"
 
 
   #Exercises

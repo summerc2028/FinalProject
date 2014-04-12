@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 	# validates :password, length: { minimum: 8 }
 	before_create :generate_token
 
+	has_many :activities
+
 	private
 
 		def User.new_auth_token

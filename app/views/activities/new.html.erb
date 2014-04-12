@@ -1,12 +1,12 @@
-<% provide(:title, 'Exercises info') %>
+<% provide(:title, 'Activities info') %>
 
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1 class="page-header">Exercise Information</h1>
-      <%= form_for(@exercise) do |f| %>
+      <h1 class="page-header">Activities Information</h1>
+      <%= form_for(@activity) do |f| %>
 
-        <%= render 'application/exercise_error_messages' %>
+        <%= render 'application/activity_error_messages' %>
 
         <%= f.label :name, "What exercise did you do?"%>
         <%= f.text_field :name, class: "form-control" %>
@@ -20,7 +20,10 @@
         <%= f.label :length, "For how long?"%>
         <%= f.text_field :length, class: "form-control" %>
 
-        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-exercise" %>
+        <%= f.label :location, "Location"%>
+        <%= f.text_field :location, class: "form-control" %>
+
+        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-activity" %>
       <% end %>
     </div>
   </div>

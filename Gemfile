@@ -14,7 +14,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'american_date'
 gem 'faker'
 gem 'bcrypt-ruby', '~> 3.1.2'
-
+gem "watu_table_builder", :require => "table_builder"
 
 group :doc do
   gem 'sdoc', require: false

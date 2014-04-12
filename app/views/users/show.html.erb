@@ -13,11 +13,12 @@
         <li class="active"><a href="#">Profile</a></li>
         <li><a href="#">Activity</a></li>
         <li><a href="#">Calendar</a></li>
-        <li><a href="#">Another Button</a></li>
+        <li><a href="#">Settings</a></li>
       </ul>
     </div>
     <div class="col-xs-9 col-xs-offset-2 main">
       <h1 class="page-header">Good Day, <%= @user.fname %></h1>
+			<%= render 'application/error_messages' %>
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h3 class="panel-title">
@@ -36,7 +37,6 @@
 					<% end %>
 				</div>
 			</div>
-			<%= render 'application/error_messages' %>
 			<div class="panel panel-primary">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">
@@ -46,13 +46,37 @@
 						</button>
 					</h3>
 			  </div>
-				<ul class="list-group">
+				<table class="table table-hover">
+					<tbody>
+						<tr>
+							<td><b>Name:</b></td>
+							<td><%= "#{@user.fname} #{@user.lname}" %></td>
+						</tr>
+						<tr>
+							<td><b>Gender:</b></td>
+							<td><%= @user.gender %></td>
+						</tr>
+						<tr>
+							<td><b>Date of Birth:</b></td>
+							<td><%= birthdate_for @user %></td>
+						</tr>
+						<tr>
+							<td><b>Height:</b></td>
+							<td><%= @user.height %> Inches</td>
+						</tr>
+						<tr>
+							<td><b>Weight:</b></td>
+							<td><%= @user.weight %> Pounds</td>
+						</tr>
+					</tbody>
+				</table>
+<!-- 				<ul class="list-group">
 			    <li class="list-group-item"><b>Name:</b> <%= "#{@user.fname} #{@user.lname}" %></li>
 			    <li class="list-group-item"><b>Gender:</b> <%= @user.gender %></li>
-			    <li class="list-group-item"><b>Date of Birth:</b> <%= @user.birthdate %></li>
+			    <li class="list-group-item"><b>Date of Birth:</b> <%= @user.birthdate.strftime("%B %e, %Y") %></li>
 			    <li class="list-group-item"><b>Height:</b> <%= @user.height %> Inches</li>
 			    <li class="list-group-item"><b>Weight:</b> <%= @user.weight %> Pounds</li>
-			  </ul>
+			  </ul> -->
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,15 @@
 FinalProject::Application.routes.draw do
 
+  get "events/index"
+  get "events/create"
+  get "events/destroy"
+  get "events/new"
+  get "events/update"
+  get "activities/index"
+  get "activities/create"
+  get "activities/destroy"
+  get "activities/new"
+  get "activities/update"
   get "activity/new"
   get "activity/create"
   get "activity/update"
@@ -38,7 +48,7 @@ FinalProject::Application.routes.draw do
   match "/update_food", to: "foods#update", via: "get"
 
   #Activities
-  resources :activites, only: [:new, :create, :show, :index, :destroy]
+  resources :activities, only: [:new, :create, :show, :index, :destroy]
 
 
   #Exercises

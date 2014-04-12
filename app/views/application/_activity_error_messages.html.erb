@@ -1,0 +1,14 @@
+<% if @activity.errors.any? %>
+  <div id="validation-errors">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        The form contains <%= pluralize(@activity.errors.count, "error") %>.
+      </div>
+      <ul class="list-group">
+        <% @activity.errors.full_messages.each do |msg| %>
+          <li class="list-group-item list-group-item-warning">* <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

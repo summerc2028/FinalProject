@@ -20,7 +20,10 @@
         <%= f.label :length, "For how long?"%>
         <%= f.text_field :length, class: "form-control" %>
 
-        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-acc" %>
+        <%= f.label :location, "Location"%>
+        <%= f.text_field :location, class: "form-control" %>
+
+        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-activity" %>
       <% end %>
     </div>
   </div>

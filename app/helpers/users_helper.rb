@@ -4,4 +4,8 @@ module UsersHelper
     	gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?size=150"
     	image_tag(gravatar_url, alt: user.fname, class: "img-thumbnail profile-pic")
   	end
+
+	def birthdate_for(user)
+		user.birthdate.strftime("%B %e, %Y")
+	end
 end

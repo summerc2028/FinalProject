@@ -15,9 +15,11 @@ FinalProject::Application.routes.draw do
   get "foods/destroy"
   get "foods/update"
   get "foods/index"
+
   # Users
-  resources :users, except: [:show]
+  resources :users, except: [:show, :update]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
+  match "/users/:username", to: "users#update", via: "patch", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
 
   # Sessions
@@ -31,12 +33,19 @@ FinalProject::Application.routes.draw do
 
   #Foods
   resources :foods, only: [:new, :create, :show, :index, :destroy]
+  match "/enter_food", to: "foods#new", via: "get"
+  match "/remove_food", to: "foods#destroy", via: "delete"
+  match "/update_food", to: "foods#update", via: "get"
 
   #Activities
   resources :activites, only: [:new, :create, :show, :index, :destroy]
 
+
   #Exercises
   resources :exercises, only: [:new, :create, :show, :index, :destroy]
+  match "/enter_exercise", to: "exercises#new", via: "get"
+  match "/remove_exercise", to: "exercises#destroy", via: "delete"
+  match "/update_exercise", to: "exercises#update", via: "get"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

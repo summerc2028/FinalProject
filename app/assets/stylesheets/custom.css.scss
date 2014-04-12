@@ -1,6 +1,7 @@
 /* Variables & Mixins */
 $brand-primary: #7ADE00;
 $off-black: #333;
+$gray: #555;
 $off-white: #EDEDED;
 $border-radius-base: 0px;
 $input-border-focus: $brand-primary;
@@ -33,7 +34,8 @@ h1 {
 }
 
 .alert {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 .form-control, .input-group {

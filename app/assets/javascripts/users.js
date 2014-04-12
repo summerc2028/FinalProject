@@ -4,9 +4,13 @@
 
 $( document ).ready(function() {
 
+  // Date picker element for user birthdate
   $( "#dp3" ).datepicker({
     endDate: new Date(),
     startView: "decade"
   });
+
+  // Tooltips
+  $( "#edit" ).tooltip();
 
 });

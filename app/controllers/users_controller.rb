@@ -39,6 +39,9 @@ class UsersController < ApplicationController
   def calendar
     @user = User.find_by_username(params[:username])
     @activities = @user.activities
+    @date = Date.current
+    @month = @date.strftime("%B")
+    @year = @date.strftime("%Y")
   end
 
   def index

@@ -124,6 +124,16 @@
 }
 
 /* Calendar */
+.cal-header-right {
+  position: relative;
+  height: 100%;
+}
+
+.date-select {
+  // position: absolute;
+  bottom: 0;
+}
+
 .calendar table {
   border-collapse: collapse;
   width: 100%;

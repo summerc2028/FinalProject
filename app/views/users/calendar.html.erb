@@ -1,7 +1,20 @@
+<% provide :title, "Calendar" %>
+<div class="row">
+  <div class="col-md-9">
+    <h1 class="page-header cal-header"><%= @month %><small><%= @year %></small></h1>
+  </div>
+  <div class="col-md-3 text-right cal-header-right">
+    <div class="btn-group date-select">
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+      <button type="button" class="btn btn-default">Today</button>
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
+    </div>
+  </div>
+</div>
 <div class="calendar">
   <%= calendar_for(@activities) do |cal| %>
     <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
-    <%= cal.day(day_method: :day) do |date, activities| %>
+    <%= cal.day(day_method: :day, year: @date.year, month: @date.month) do |date, activities| %>
       <%= date.day %>
       <% activities.each do |activity| %>
         <%= h(activity.name) %>

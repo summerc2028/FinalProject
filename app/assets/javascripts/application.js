@@ -16,5 +16,4 @@
 //= require_tree .
 //= require bootstrap.min
 //= require bootstrap-datepicker
-//= require jquery.tablesorter.min
-//= require jquery.tablesorter.pager
+//= require jquery-tablesorter

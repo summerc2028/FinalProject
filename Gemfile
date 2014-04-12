@@ -13,13 +13,14 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'bootstrap-datepicker-rails'
 gem 'american_date'
 gem 'faker'
+gem 'bcrypt-ruby', '~> 3.1.2'
 gem "watu_table_builder", :require => "table_builder"
+gem 'jquery-tablesorter'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'

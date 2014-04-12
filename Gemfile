@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'validates_timeliness', '~> 3.0'
 gem 'bootstrap-datepicker-rails'
 gem 'american_date'
+gem 'faker'
 
 group :doc do
   gem 'sdoc', require: false

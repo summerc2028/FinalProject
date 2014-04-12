@@ -13,4 +13,8 @@ $( document ).ready(function() {
   // Tooltips
   $( "#edit" ).tooltip();
 
+  $("#userTable").tablesorter()
+	//.tablesorterPager({container: $("#pager")});
+   
+
 });

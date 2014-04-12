@@ -1,12 +1,54 @@
-<h1>Users#index</h1>
+<h1>List Of Users</h1>
 
-<h1>All users</h1>
-
-<ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.fname, user %>
-    </li>
-  <% end %>
-</ul>
+<table id="userTable" class="tablesorter table table-hover table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Last Name<span class="caret"></span></th>
+			<th>First Name<span class="caret"></span></th>
+			<th>Username<span class="caret"></span></th>
+			<th>Email<span class="caret"></span></th>
+			<th>Created On:<span class="caret"></span></th>
+			<th>Updated On:<span class="caret"></span></th>
+		</tr>
+	</thead>
+	<tbody>
+  		<% @users.each do |user| %>
+    	<tr>
+	    	<td>
+	      		<%= user.lname %>
+	      	</td>
+	      	<td>
+	      		<%= user.fname %>
+	      	</td>	
+	      	<td>
+	      		<%= link_to user.username, user %>
+	      	</td>
+	      	<td>
+	      		<%= user.email %>
+	      	</td>
+	      	<td>
+	      		<%= time_for(user.created_at) %>
+	      	</td>
+	      	<td>
+	      		<%= time_for(user.updated_at) %>
+	      	</td>
+	    </tr>
+	  <% end %>
+	</tbody>
+</table>
+<!-- <div id="pager" class="pager">
+	<form>
+		<img src="http://mottie.github.com/tablesorter/addons/pager/icons/first.png"" class="first">
+		<img src="http://mottie.github.com/tablesorter/addons/pager/icons/prev.png"" class="prev">
+		<input type="text" class="pagedisplay">
+		<img src="http://mottie.github.com/tablesorter/addons/pager/icons/next.png" class="next">
+		<img src="http://mottie.github.com/tablesorter/addons/pager/icons/last.png" class="last">
+		<select class="pagesize">
+			<option selected="selected" value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+			<option value="40">40</option>
+		</select>
+	</form>
+</div> -->
 

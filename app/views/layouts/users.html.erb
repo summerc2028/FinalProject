@@ -9,6 +9,12 @@
 </head>
 <body>
   <%= render 'application/header' %>
+
+
+
+
+
+
   <div id="wrapper">
     <div id="sidebar-wrapper">
       <ul class="nav nav-stacked" id ="sidebar">
@@ -19,6 +25,7 @@
         <li><a href="#">Settings</a></li>
       </ul>
     </div>
+
     <div id="page-content-wrapper">
       <div class="page-content">
         <div class="container">
@@ -32,14 +39,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-2">
-        <pre>
-          <%= debug(params) if Rails.env.development? %>
-        </pre>
-      </div>
-    </div>
-  </div>
+</div>
+
 </body>
 </html>

@@ -37,6 +37,9 @@ class UsersController < ApplicationController
   def calendar
     @user = User.find_by_username(params[:username])
     @activities = @user.activities
+
+  def index
+    @users = User.all
   end
 
   private

@@ -1,4 +1,7 @@
 class FoodsController < ApplicationController
+  before_filter :authenticate
+
+
   def new
     @food = Food.new
   end
@@ -13,5 +16,10 @@ class FoodsController < ApplicationController
   end
 
   def index
+  end
+
+  def authenticate
+    flash[:danger] = 'Cannot Add Food, Please Sign In!'
+    redirect_to("/signin") if current_user.nil?
   end
 end

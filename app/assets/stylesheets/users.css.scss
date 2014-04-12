@@ -64,3 +64,8 @@
 .panel > .table > tbody:first-child th, .panel > .table > tbody:first-child td {
   border-top: 1px solid #ddd;
 }
+
+#userTable th:hover {
+    background-color: $brand-primary; 
+    color: $off-white; 
+  }

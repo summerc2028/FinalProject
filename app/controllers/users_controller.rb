@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout "layouts/users", except: [:new, :index]
-
+  layout "layouts/application", only: [:new, :index]
+  
   before_action :signed_in_user, only: [:show, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 

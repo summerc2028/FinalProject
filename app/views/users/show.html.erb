@@ -1,19 +1,25 @@
 <% provide(:title, "#{@user.fname} #{@user.lname}") %>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-2">
-      <ul class="nav nav-sidebar affix">
+
+
+
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+			<ul class="nav nav-stacked" id ="sidebar">
 				<%= gravatar_for(@user) %>
-        <li class="active"><a href="#">Profile</a></li>
-        <li><a href="#">Activity</a></li>
-        <li><a href="#">Calendar</a></li>
-        <li><a href="#">Settings</a></li>
-      </ul>
+				<li class="active"><a href="#">Profile</a></li>
+				<li><a href="#">Activity</a></li>
+				<li><a href="#">Calendar</a></li>
+				<li><a href="#">Settings</a></li>
+			</ul>
     </div>
-    <div class="col-xs-9 col-xs-offset-2 main">
-			<%= render 'application/flash' %>
-      <h1 class="page-header">Good Day, <%= @user.fname %></h1>
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-md-10 ">
+                        			<%= render 'application/flash' %>
+			<h1 class="page-header">Good Day, <%= @user.fname %></h1>
 			<%= render 'application/error_messages' %>
 			<div class="panel panel-primary">
 				<div class="panel-heading">
@@ -26,22 +32,22 @@
 					<hr>
 					<%= form_for(@user) do |f| %>
 
-						<%= f.text_field :status, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
+					<%= f.text_field :status, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
 
-						<%= f.submit "Post", class: "btn btn-primary" %>
+					<%= f.submit "Post", class: "btn btn-primary" %>
 
 					<% end %>
 				</div>
 			</div>
 			<div class="panel panel-primary">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">
+				<div class="panel-heading">
+					<h3 class="panel-title">
 						About
 						<button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</button>
 					</h3>
-			  </div>
+				</div>
 				<table class="table table-hover">
 					<tbody>
 						<tr>
@@ -67,6 +73,9 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
-	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

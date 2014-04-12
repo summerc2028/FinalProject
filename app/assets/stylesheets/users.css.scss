@@ -2,6 +2,60 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#wrapper {
+  padding-left: 250px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #000;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width:767px) {
+
+    #wrapper {
+      padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+      left: 0;
+    }
+
+    #wrapper.active {
+      position: relative;
+      left: 250px;
+    }
+
+    #wrapper.active #sidebar-wrapper {
+      left: 250px;
+      width: 250px;
+      transition: all 0.4s ease 0s;
+    }
+
+}
+
+
 /* Create */
 #create-acc {
   margin-top: 20px;
@@ -16,22 +70,23 @@
   display: block;
 }
 
-.nav-sidebar {
+
+.nav-stacked{
   background-color: $brand-primary;
   border-right: 5px solid $brand-primary;
   padding-right: 0px;
-  min-height: 100%;
+  height: 100%;
   margin-top: -20px;
 }
 
-.nav-sidebar li.active {
+.nav-stacked li.active {
   background-color: $off-white;
   a {
     color: $brand-primary;
   }
 }
 
-.nav-sidebar li a {
+.nav-stacked li a {
   color: $off-white;
   font-weight: bold;
   letter-spacing: 2px;
@@ -40,11 +95,13 @@
   }
 }
 
-.nav-sidebar.affix {
+.nav-stacked.affix {
   position: fixed;
   top:70px;
   width:228px;
 }
+
+
 
 .main {
   padding-left: 20px;
@@ -60,6 +117,7 @@
     float: right;
   }
 }
+
 
 .panel > .table > tbody:first-child th, .panel > .table > tbody:first-child td {
   border-top: 1px solid #ddd;

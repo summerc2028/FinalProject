@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       sign_in user, params[:remember_me]
       flash[:success] = "Successfully Signed In!"
-      redirect_to usernames_path(user.username)
+      redirect_back_or usernames_path(user.username)
     else
       flash.now[:danger] = "Invalid username or password"
       render 'new'

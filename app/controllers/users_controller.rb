@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout "layouts/users", except: [:new, :index]
+
   before_action :signed_in_user, only: [:show, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
 
@@ -37,6 +39,7 @@ class UsersController < ApplicationController
   def calendar
     @user = User.find_by_username(params[:username])
     @activities = @user.activities
+  end
 
   def index
     @users = User.all

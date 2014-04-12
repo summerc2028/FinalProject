@@ -64,3 +64,66 @@
 .panel > .table > tbody:first-child th, .panel > .table > tbody:first-child td {
   border-top: 1px solid #ddd;
 }
+
+/* Calendar */
+.calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.calendar td,
+.calendar th {
+  padding: 6px;
+  border: 1px solid #ddd;
+}
+
+.calendar th {
+  background: $brand-primary;
+  color: $off-white;
+  text-align: center;
+  letter-spacing: 2px;
+  width: 14.2857142857143%;
+}
+
+.calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+.calendar .notmonth {
+  color: #CCC;
+}
+
+.calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.calendar #month a, .calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+.calendar .today {
+  background-color: lighten($brand-primary, 45%);
+}
+
+.calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+.calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  text-align: center;
+}

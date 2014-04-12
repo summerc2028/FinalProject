@@ -13,6 +13,7 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'bootstrap-datepicker-rails'
 gem 'american_date'
 gem 'faker'
+gem "watu_table_builder", :require => "table_builder"
 
 group :doc do
   gem 'sdoc', require: false

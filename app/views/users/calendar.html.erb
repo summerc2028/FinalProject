@@ -1,0 +1,11 @@
+<div class="calendar">
+  <%= calendar_for(@activities) do |cal| %>
+    <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
+    <%= cal.day(day_method: :day) do |date, activities| %>
+      <%= date.day %>
+      <% activities.each do |activity| %>
+        <%= h(activity.name) %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

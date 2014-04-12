@@ -1,5 +1,10 @@
 FinalProject::Application.routes.draw do
 
+  get "activity/new"
+  get "activity/create"
+  get "activity/update"
+  get "activity/destroy"
+  get "activity/index"
   get "exercises/new"
   get "exercises/create"
   get "exercises/destroy"
@@ -26,7 +31,9 @@ FinalProject::Application.routes.draw do
 
   #Foods
   resources :foods, only: [:new, :create, :show, :index, :destroy]
-  match
+
+  #Activities
+  resources :activites, only: [:new, :create, :show, :index, :destroy]
 
   #Exercises
   resources :exercises, only: [:new, :create, :show, :index, :destroy]

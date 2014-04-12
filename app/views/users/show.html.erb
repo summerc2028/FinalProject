@@ -1,11 +1,6 @@
 <% provide(:title, "#{@user.fname} #{@user.lname}") %>
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-9 col-xs-offset-2">
-			<%= render 'application/flash' %>
-		</div>
-	</div>
   <div class="row">
     <div class="col-xs-2">
       <ul class="nav nav-sidebar affix">
@@ -17,6 +12,7 @@
       </ul>
     </div>
     <div class="col-xs-9 col-xs-offset-2 main">
+			<%= render 'application/flash' %>
       <h1 class="page-header">Good Day, <%= @user.fname %></h1>
 			<%= render 'application/error_messages' %>
 			<div class="panel panel-primary">
@@ -70,42 +66,7 @@
 						</tr>
 					</tbody>
 				</table>
-<!-- 				<ul class="list-group">
-			    <li class="list-group-item"><b>Name:</b> <%= "#{@user.fname} #{@user.lname}" %></li>
-			    <li class="list-group-item"><b>Gender:</b> <%= @user.gender %></li>
-			    <li class="list-group-item"><b>Date of Birth:</b> <%= @user.birthdate.strftime("%B %e, %Y") %></li>
-			    <li class="list-group-item"><b>Height:</b> <%= @user.height %> Inches</li>
-			    <li class="list-group-item"><b>Weight:</b> <%= @user.weight %> Pounds</li>
-			  </ul> -->
 			</div>
 		</div>
 	</div>
 </div>
-
-<!-- <div class="container-fluid">
-	<div class="row">
-		<div id="sidebar" class="col-xs-2">
-
-					<ul class="nav nav-pills nav-stacked">
-						<li class="pill first-pill"><a>Activity Log</a></li>
-						<li class="pill"><a>Calaender</a></li>
-						<li class="pill"><a>Another Button</a></li>
-					</ul>
-		</div>
-		<div class="col-xs-10 text-right">
-			<h1>Good Day, <%= @user.fname %></h1>
-			<p><%= @user.email %></p>
-		</div>
-	</div>
-<!--
-	<div class="row">
-
-		<div class="col-xs-4 col-xs-offset-2">
-			<p>We can place Information here</p>
-			<p>This will All look better once i have more to put in here!!</p>
-		</div>
-		<div class="col-xs-4">
-			<p>We can place Information here</p>
-		</div>
-	</div>
-	<h2>This is going to link to the database and pull information from there</h2> -->

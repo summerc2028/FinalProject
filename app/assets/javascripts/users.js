@@ -14,6 +14,22 @@ $( document ).ready(function() {
   $( "#activity-date" ).datepicker({
     todayHighlight: true
   });
+  // Remove the add button functionality from .notmonth
+  $( ".notmonth .cal-add-button" ).addClass("no-button");
+  $( ".notmonth .cal-add-button" ).removeClass("cal-add-button");
+  // Set the add buttons to trigger the modal
+  $( ".cal-add-button" ).attr({
+    "data-toggle": "modal",
+    "data-target": "#new-activity-modal"
+  });
+  // Automatically generate appropriate date
+  $( ".cal-add-button" ).click(function() {
+    var date = $( this ).prev().text().trim();
+    var year = $( "meta[name=cal]" ).attr("year");
+    var month = $( "meta[name=cal]").attr("month");
+    $( ".datepicker" ).val(month + "/" + date + "/" + year);
+  });
+
 
   // Tooltips
   $( "#edit" ).tooltip();

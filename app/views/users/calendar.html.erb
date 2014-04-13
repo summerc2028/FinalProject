@@ -1,8 +1,10 @@
 <% provide :title, "Calendar" %>
+<% provide :month, @date.month.to_s %>
+<% provide :year, @date.year.to_s %>
+
 <h1 class="page-header cal-header">
   <%= @month %>
   <small><%= @year %></small>
-  <button type="submit" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#new-activity-modal">New Activity</button>
   <div class="btn-group date-select">
     <%= link_to date: @date.prev_month do %>
       <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
@@ -52,7 +54,7 @@
 
                 <%= label_tag :day %>
                 <div class="form-group">
-                  <div class="input-group date" id="activity-date" data-date-format="mm/dd/yyyy">
+                  <div class="input-group date" id="activity-date" data-date-format="m/d/yyyy">
                     <%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                   </div>

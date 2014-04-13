@@ -139,10 +139,9 @@
   width: 100%;
 }
 
-.calendar td,
 .calendar th {
   padding: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid $off-black;
 }
 
 .calendar th {
@@ -153,15 +152,16 @@
   width: 14.2857142857143%;
 }
 
+.calendar tr {
+  margin-bottom: -3px;
+}
+
 .calendar td {
   background: #FFF;
   color: #777;
   height: 200px;
   vertical-align: top;
   font-size: 16px;
-  &:hover {
-    background: $off-white;
-  }
 }
 
 .calendar .notmonth {
@@ -181,7 +181,7 @@
   color: #999;
 }
 
-.calendar .today {
+.today .cal-content {
   background-color: lighten($brand-primary, 45%);
   &:hover {
     background: lighten($brand-primary, 30%);
@@ -200,4 +200,32 @@
   padding: 0;
   font-size: 11px;
   text-align: center;
+}
+
+.cal-content {
+  border-top: 1px solid $off-black;
+  border-left: 1px solid $off-black;
+  border-right: 1px solid $off-black;
+  height: 80%;
+  &:hover {
+    background: $off-white;
+  }
+}
+
+.cal-add-button {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid $off-black;
+  border-right: 1px solid $off-black;
+  height: 100%;
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+  &:hover {
+    background: lighten($brand-primary, 20%);
+  }
+}
+
+/* Add Activity */
+.datepicker{
+  z-index:1151 !important;
 }

@@ -2,6 +2,7 @@
 <h1 class="page-header cal-header">
   <%= @month %>
   <small><%= @year %></small>
+  <button type="submit" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#new-activity-modal">New Activity</button>
   <div class="btn-group date-select">
     <%= link_to date: @date.prev_month do %>
       <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
@@ -17,11 +18,64 @@
 <div class="calendar">
   <%= calendar_for @activities, year: @date.year, month: @date.month do |cal| %>
     <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
-    <%= cal.day(day_method: :day, year: @date.year, month: @date.month) do |date, activities| %>
+    <%= cal.day(day_method: :day) do |date, activities| %>
+      <div class="cal-content">
       <%= date.day %>
-      <% activities.each do |activity| %>
-        <%= h(activity.name) %>
-      <% end %>
+      <ul>
+        <% activities.each do |activity| %>
+            <li><%= activity.name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
     <% end %>
   <% end %>
+</div>
+
+<!-- New Activity Modal -->
+<div class="modal fade" id="new-activity-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- New Activity Form -->
+      <%= form_tag create_activity_path do %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">New Activity</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-10 col-md-offset-1">
+
+                <%= label_tag :name, "Description" %>
+                <%= text_field_tag :name, nil, class: "form-control" %>
+
+                <%= label_tag :day %>
+                <div class="form-group">
+                  <div class="input-group date" id="activity-date" data-date-format="mm/dd/yyyy">
+                    <%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                  </div>
+                </div>
+
+                <%= label_tag :time %>
+                <%= text_field_tag :time, nil, class: "form-control" %>
+
+                <%= label_tag :length, "Duration" %>
+                <%= text_field_tag :length, nil, class: "form-control" %>
+
+                <%= label_tag :location %>
+                <%= text_field_tag :location, nil, class: "form-control" %>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag "Submit", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
 </div>

@@ -5,16 +5,21 @@
 $( document ).ready(function() {
 
   // Date picker element for user birthdate
-  $( "#dp3" ).datepicker({
+  $( "#bday-picker" ).datepicker({
     endDate: new Date(),
     startView: "decade"
+  });
+
+  // Init calendar activity creation modals
+  $( "#activity-date" ).datepicker({
+    todayHighlight: true
   });
 
   // Tooltips
   $( "#edit" ).tooltip();
 
-  $("#userTable").tablesorter()
+  $("#userTable").tablesorter();
 	//.tablesorterPager({container: $("#pager")});
-   
+
 
 });

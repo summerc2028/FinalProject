@@ -24,7 +24,7 @@ $( document ).ready(function() {
   });
   // Automatically generate appropriate date
   $( ".cal-add-button" ).click(function() {
-    var date = $( this ).prev().text().trim();
+    var date = $( this ).prev().text().trim().split(" ", 1)[0];
     var year = $( "meta[name=cal]" ).attr("year");
     var month = $( "meta[name=cal]").attr("month");
     $( ".datepicker" ).val(month + "/" + date + "/" + year);

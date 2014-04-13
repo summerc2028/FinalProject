@@ -237,6 +237,10 @@
   text-align: center;
 }
 
+.calendar a:hover {
+  text-decoration: none;
+}
+
 /* Add Activity */
 .datepicker{
   z-index:1151 !important;

@@ -22,7 +22,7 @@
 	      		<%= user.fname %>
 	      	</td>
 	      	<td>
-	      		<%= link_to user.username, user %>
+	      		<%= link_to user.username, usernames_path(user.username) %>
 	      	</td>
 	      	<td>
 	      		<%= user.email %>

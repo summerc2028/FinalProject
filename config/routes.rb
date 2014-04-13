@@ -23,9 +23,10 @@ FinalProject::Application.routes.draw do
   match "/users/:username/update_food", to: "foods#update", via: "get"
 
   #Activities
-  resources :activities, only: [:show, :index]
+  resources :activities, only: [:index]
   match "/users/:username/enter_activity", to: "activities#new", via: "get", as: "new_activity"
   match "/users/:username/create_activity", to: "activities#create", via: "post", as: "create_activity"
+  match "/users/:username/single-view/:id", to: "activities#show", via: "get", as: "show_activity"
   match "/users/:username/remove_activity", to: "activities#destroy", via: "delete"
   match "/users/:username/update_activity", to: "activities#update", via: "get"
 

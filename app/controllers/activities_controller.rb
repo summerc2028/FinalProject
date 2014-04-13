@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  layout "layouts/users", except: [:new, :index]
+
   before_filter :authenticate
   before_filter :correct_user
   def new
@@ -17,6 +19,11 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by_username(params[:username])
+    @activity = Activity.find params[:id]
+  end
+
   def destroy
   end
 
@@ -33,8 +40,10 @@ class ActivitiesController < ApplicationController
     end
 
     def authenticate
-      flash.now[:danger] = 'Cannot Add Activities, Please Sign In!'
-      redirect_to("/signin") if current_user.nil?
+      unless signed_in?
+        flash.now[:danger] = 'Cannot Add Activities, Please Sign In!'
+        redirect_to("/signin") if current_user.nil?
+      end
     end
 
     def correct_user

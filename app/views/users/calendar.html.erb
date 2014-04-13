@@ -23,12 +23,12 @@
     <%= cal.day(day_method: :day) do |date, activities| %>
       <div class="cal-content">
       <%= date.day %>
-      <ul>
-        <% activities.each do |activity| %>
-            <li><%= activity.name %></li>
-        <% end %>
-      </ul>
-    </div>
+        <ul>
+          <% activities.each do |activity| %>
+              <li><%= link_to activity.name.upcase, show_activity_path(username: current_user.username, id: activity.id) %></li>
+          <% end %>
+        </ul>
+      </div>
     <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
     <% end %>
   <% end %>

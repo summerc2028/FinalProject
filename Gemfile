@@ -22,6 +22,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+end
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

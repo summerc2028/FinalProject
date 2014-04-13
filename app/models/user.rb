@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	validates :lname, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, 	presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  	validates :username, presence: true, length: { in: 6..16 }, uniqueness: { case_sensitive: false}
+  validates :username, presence: true, length: { in: 6..16 }, uniqueness: { case_sensitive: false }
 	validates :height, numericality: { only_integer: true }, allow_nil: true
 	validates :weight, numericality: { only_integer: true }, allow_nil: true
 	VALID_GENDER_REGEX = /\A(Male)|(Female)\z/
@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: { minimum: 8 }, on: :create
 	before_create :generate_token
+	validates :auth_token, presence: true, uniqueness: { case_sensitive: false }
 
 	has_many :activities
 

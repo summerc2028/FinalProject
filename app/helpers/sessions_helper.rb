@@ -33,7 +33,7 @@ module SessionsHelper
 
   def redirect_back_or(default)
     redirect_to(cookies[:return_to] || default)
-    session.delete(:return_to)
+    cookies.delete(:return_to)
   end
 
   def store_location

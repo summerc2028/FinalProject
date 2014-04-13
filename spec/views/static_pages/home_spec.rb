@@ -9,31 +9,22 @@ describe "Home page" do
   it { should have_title full_title('') }
   it { should_not have_title('| Home') }
 
-  it "should appear signed in" do
-    expect(signed_in?).to be_false
-  end
-
-  it "should return a current_user" do
-    expect(current_user).to be_nil
-  end
-
   describe "for signed-in users" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, username: "testuser", password: "password", password_confirmation: "password") }
     before do
-      sign_in user, false
       visit root_path
-    end
-
-    it "should appear signed in" do
-      expect(signed_in?).to be_true
-    end
-
-    it "should return a current_user" do
-      expect(current_user).not_to be_nil
+      first("button", "Sign In").click
+      fill_in :username, with: "testuser"
+      fill_in :password, with: "password"
+      find('.modal-footer button').click
     end
 
     it "should render the account dropdown" do
-      expect(page).to have_css('button[data-target="#sign-in-modal"]')#'button[class="btn btn-default navbar-btn dropdown-toggle"]')
+      expect(page).to have_css('button[class="btn btn-default navbar-btn dropdown-toggle"]')
+    end
+
+    it "should not render a flash warning" do
+      expect(page).not_to have_content "Invalid username or password"
     end
   end
 end

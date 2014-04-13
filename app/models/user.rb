@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: { minimum: 8 }, on: :create
 	before_create :generate_token
-	validates :auth_token, presence: true, uniqueness: { case_sensitive: false }
+	validates :auth_token, uniqueness: { case_sensitive: false }
 
 	has_many :activities
 

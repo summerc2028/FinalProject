@@ -1,37 +1,11 @@
 FinalProject::Application.routes.draw do
 
-  get "events/index"
-  get "events/create"
-  get "events/destroy"
-  get "events/new"
-  get "events/update"
-  get "activities/index"
-  get "activities/create"
-  get "activities/destroy"
-  get "activities/new"
-  get "activities/update"
-  get "activity/new"
-  get "activity/create"
-  get "activity/update"
-  get "activity/destroy"
-  get "activity/index"
-  get "exercises/new"
-  get "exercises/create"
-  get "exercises/destroy"
-  get "exercises/update"
-  get "exercises/index"
-  get "foods/new"
-  get "foods/create"
-  get "foods/destroy"
-  get "foods/update"
-  get "foods/index"
-
   # Users
   resources :users, except: [:show, :update]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
   match "/users/:username", to: "users#update", via: "patch", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
-  match "/users/:username/calendar", to: "users#calendar", via: "get"
+  match "/users/:username/calendar", to: "users#calendar", via: "get", as: "calendar"
 
   # Sessions
   resources :sessions, only: [:create]
@@ -49,9 +23,10 @@ FinalProject::Application.routes.draw do
   match "/users/:username/update_food", to: "foods#update", via: "get"
 
   #Activities
-  resources :activities, only: [:new, :create, :show, :index, :destroy]
-  match "/users/:username/enter_activity", to: "activities#new", via: "get"
-  match "/users/:username/remove_activity", to: "activities#destory", via: "delete"
+  resources :activities, only: [:show, :index]
+  match "/users/:username/enter_activity", to: "activities#new", via: "get", as: "new_activity"
+  match "/users/:username/create_activity", to: "activities#create", via: "post", as: "create_activity"
+  match "/users/:username/remove_activity", to: "activities#destroy", via: "delete"
   match "/users/:username/update_activity", to: "activities#update", via: "get"
 
 

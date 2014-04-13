@@ -1,5 +1,6 @@
-<h1>List Of Users</h1>
+<% provide :title, "Index" %>
 
+<h1 class="page-header">List Of Users</h1>
 <table id="userTable" class="tablesorter table table-hover table-striped table-bordered">
 	<thead>
 		<tr>
@@ -19,7 +20,7 @@
 	      	</td>
 	      	<td>
 	      		<%= user.fname %>
-	      	</td>	
+	      	</td>
 	      	<td>
 	      		<%= link_to user.username, user %>
 	      	</td>
@@ -51,4 +52,3 @@
 		</select>
 	</form>
 </div> -->
-

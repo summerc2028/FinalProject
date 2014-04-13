@@ -6,6 +6,7 @@ FinalProject::Application.routes.draw do
   match "/users/:username", to: "users#update", via: "patch", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
   match "/users/:username/calendar", to: "users#calendar", via: "get", as: "calendar"
+  match "/users/:username/status", to: "users#update_status", via: "post", as: "update_status"
 
   # Sessions
   resources :sessions, only: [:create]

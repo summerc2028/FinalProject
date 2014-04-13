@@ -11,11 +11,11 @@
 	<div class="panel-body">
 		<%= @user.status %>
 		<hr>
-		<%= form_for(@user) do |f| %>
+		<%= form_tag update_status_path(@user.username) do %>
 
-		<%= f.text_field :status, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
+		<%= text_field_tag :status, nil, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
 
-		<%= f.submit "Post", class: "btn btn-primary" %>
+		<%= submit_tag "Post", class: "btn btn-primary" %>
 
 		<% end %>
 	</div>

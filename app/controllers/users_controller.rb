@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   layout "layouts/users", except: [:new, :index]
   layout "layouts/application", only: [:new, :index]
-  
-  before_action :signed_in_user, only: [:show, :edit, :update]
-  before_action :correct_user,   only: [:edit, :update]
+
+  before_action :signed_in_user, only: [:show, :calendar, :edit, :update]
+  before_action :correct_user,   only: [:edit, :calendar, :update]
 
   def new
     @user = User.new
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def calendar
     @user = User.find_by_username(params[:username])
     @activities = @user.activities
-    @date = Date.current
+    @date = params[:date] ? Date.strptime(params[:date], "%Y-%m") : Date.today
     @month = @date.strftime("%B")
     @year = @date.strftime("%Y")
   end
@@ -57,14 +57,14 @@ class UsersController < ApplicationController
 
   def signed_in_user
     unless signed_in?
-      flash[:success] = "Sign in to access this page"
+      flash[:danger] = "Sign in to access this page"
       store_location
       redirect_to signin_path
     end
   end
 
   def correct_user
-    @user = User.find(params[:username])
+    @user = User.find_by_username(params[:username])
     redirect_to(root_path) unless current_user?(@user)
   end
 end

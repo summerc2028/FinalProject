@@ -1,18 +1,21 @@
 <% provide :title, "Calendar" %>
-<div class="row">
-  <div class="col-md-9">
-    <h1 class="page-header cal-header"><%= @month %><small><%= @year %></small></h1>
+<h1 class="page-header cal-header">
+  <%= @month %>
+  <small><%= @year %></small>
+  <div class="btn-group date-select">
+    <%= link_to date: @date.prev_month do %>
+      <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+    <% end %>
+    <%= link_to date: Date.today do %>
+      <button class="btn btn-default">Today</button>
+    <% end %>
+    <%= link_to date: @date.next_month do %>
+      <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></button>
+    <% end %>
   </div>
-  <div class="col-md-3 text-right cal-header-right">
-    <div class="btn-group date-select">
-      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
-      <button type="button" class="btn btn-default">Today</button>
-      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
-    </div>
-  </div>
-</div>
+</h1>
 <div class="calendar">
-  <%= calendar_for(@activities) do |cal| %>
+  <%= calendar_for @activities, year: @date.year, month: @date.month do |cal| %>
     <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
     <%= cal.day(day_method: :day, year: @date.year, month: @date.month) do |date, activities| %>
       <%= date.day %>

@@ -13,11 +13,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:username])
     @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
+    @day_activities = @user.activities.select { |x| x.day.eql? @date }
   end
 
   def show_day
     @user = User.find_by_username(params[:username])
     @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
+    @day_activities = @user.activities.select { |x| x.day.eql? @date }
   end
 
   def create

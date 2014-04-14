@@ -63,3 +63,37 @@
 	</table>
 </div>
 </form>
+<div class="panel panel-primary col-md-6">
+	<div class="panel-heading">
+		<h3 class="panel-title">Today's Activities</h3>
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Time</th>
+				<th>Location</th>
+				<th>Length</th>
+			</tr>
+		</thead>	
+		<tbody>
+		 	<% @user.activities.each do |activity| %>
+	    	<tr>
+		    	<td>
+		      		<%= activity.name %>
+		      	</td>
+		      	<td>
+		      		<%= activity.time %>
+		      	</td>
+		      	<td>
+		      		<%= activity.location %>
+		      	</td>
+		      	<td>
+		      		<%= activity.length %>
+		      	</td>
+		    </tr>
+		  <% end %>
+		</tbody>
+	</table>
+</div>
+

@@ -1,19 +1,60 @@
-<h1 class="page-header">Daily View<small><%= @date.strf("%B %e, %Y") %></small></h1>
-<table>
-	<% @user.activities.each do |x| %>
-		<% if x.day.eql? @date %> 
-			<tr>
-			    <td>
-			    	<%= x.name %>
-			    </td>
-			</tr>
-		<% end %>
+<h1 class="page-header">Daily View<small><%= @date.strftime("%B %e, %Y") %></small></h1>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			Activities
+			<%= link_to new_activity_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New Activity" do %>
+				<span class="glyphicon glyphicon-plus glyph-button"></span>
+			<% end %>
+		</h3>
+	</div>
+	<% unless @day_activities.empty? %>
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Location</th>
+					<th>Time</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @day_activities.each do |x| %>
+					<tr>
+				    <td>
+				    	<%= x.name %>
+				    </td>
+						<td>
+							<%= x.location %>
+						</td>
+						<td>
+							<%= x.time.strftime("%l:%M %p") %>
+						</td>
+						<td>
+							<%= x.length %>
+						</td>
+						<td>
+							<%= link_to "View", show_activity_path(username: params[:username], id: x.id), class: "btn btn-primary" %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	<% else %>
+
+		<div class="panel-body">
+			There are no activities scheduled for this day
+		</div>
+
 	<% end %>
-</table>
+
+</div>
 
 <table>
 	<% @user.exercises.each do |x| %>
-		<% if x.day.eql? @date %> 
+		<% if x.day.eql? @date %>
 			<tr>
 			    <td>
 			    	<%= x.name %>

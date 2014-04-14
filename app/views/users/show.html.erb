@@ -69,36 +69,40 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Today's Activities</h3>
 			</div>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Time</th>
-						<th>Location</th>
-						<th>Length</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @user.activities.each do |activity| %>
-						<% if activity.day.eql? @date %>
-					    <tr>
-					    	<td>
-				      		<%= activity.name %>
-				      	</td>
-				      	<td>
-				      		<%= activity.time.strftime("%H:%M") %> <!-- (%I:%M) if we use 12 hr clock -->
-				      	</td>
-				      	<td>
-				      		<%= activity.location %>
-				      	</td>
-				      	<td>
-				      		<%= activity.length %>
-				      	</td>
-					    </tr>
-			    	<% end %>
-			  	<% end %>
-				</tbody>
-			</table>
+			<% if @user.activities.empty? %>
+				<h4 class="text-center">There Are Currently No Activies Today</h4>
+			<% else %>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Time</th>
+							<th>Location</th>
+							<th>Length</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @user.activities.each do |activity| %>
+							<% if activity.day.eql? @date %>
+							    <tr>
+							    	<td>
+						      			<%= activity.name %>
+						      		</td>
+						      		<td>
+						      			<%= activity.time.strftime("%H:%M") %> <!-- (%I:%M) if we use 12 hr clock -->
+						      		</td>
+						      		<td>
+						      			<%= activity.location %>
+						      		</td>
+						      		<td>
+						      			<%= activity.length %>
+						      		</td>
+							    </tr>
+							<% end %>
+				  		<% end %>
+					</tbody>
+				</table>
+			<% end %>
 		</div>
 	</div>
 	<div class="col-md-6">

@@ -1,6 +1,5 @@
 <% provide :title, "Calendar" %>
-<% provide :month, @date.month.to_s %>
-<% provide :year, @date.year.to_s %>
+<input id="cal-meta" type="hidden" month="<%= @date.month.to_s %>" year="<%= @date.year.to_s %>" />
 
 <h1 class="page-header cal-header">
   <%= @month %>
@@ -29,7 +28,16 @@
           <% end %>
         </ul>
       </div>
-    <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
+      <table class="cal-buttons">
+        <tr>
+            <td>
+              <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
+            </td>
+            <td>
+              <div class="cal-view-button"><span class="glyphicon glyphicon-zoom-in"></span></div>
+            </td>
+          </tr>
+      </table>
     <% end %>
   <% end %>
 </div>

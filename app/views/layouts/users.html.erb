@@ -13,7 +13,7 @@
     <div id="sidebar-wrapper">
       <ul class="nav nav-stacked" id ="sidebar">
         <%= gravatar_for(@user) %>
-        <li class="<%=is_active 'show'%>"><%= link_to "Calendar", usernames_path(current_user.username) if current_user %></li>
+        <li class="<%=is_active 'show'%>"><%= link_to "Profile", usernames_path(current_user.username) if current_user %></li>
         <li><a href="#">Activity</a></li>
         <li class="<%=is_active 'calendar'%>"><%= link_to "Calendar", calendar_path(current_user.username) if current_user %></li>
         <li><a href="#">Settings</a></li>

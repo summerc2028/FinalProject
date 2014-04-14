@@ -214,6 +214,9 @@
 
 .cal-buttons {
   border: none;
+  td {
+    height: 100%;
+  }
 }
 
 .cal-add-button, .cal-view-button {
@@ -242,7 +245,7 @@
   border-bottom: 1px solid $off-black;
   height: 20%%;
   color: #fff;
-  font-size: 2em;
+  font-size: 1.7em;
   text-align: center;
 }
 

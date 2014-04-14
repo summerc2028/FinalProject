@@ -44,6 +44,14 @@ $( document ).ready(function() {
 
   });
 
+  // Disable status post until change
+  $( "#status" ).keyup(function() {
+    if ($( this ).val() == "") {
+      $( "#post-status" ).attr("disabled", "disabled");
+    } else {
+      $( "#post-status" ).removeAttr("disabled");
+    }
+  });
 
   // Tooltips
   $( "#edit" ).tooltip();

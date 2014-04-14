@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
   end
 
+  def show_day
+    @user = User.find_by_username(params[:username])
+    @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save

@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 	validates :auth_token, uniqueness: { case_sensitive: false }
 
 	has_many :activities
+	has_many :exercises
+	has_many :foods
 
 	private
 

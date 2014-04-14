@@ -212,30 +212,49 @@
   }
 }
 
-.cal-add-button {
+.cal-buttons {
+  border: none;
+}
+
+.cal-add-button, .cal-view-button {
   border-top: 1px solid #ddd;
-  border-left: 1px solid $off-black;
-  border-right: 1px solid $off-black;
   border-bottom: 1px solid $off-black;
-  height: 20%%;
+  height: 20%;
   color: #fff;
-  font-size: 2em;
+  font-size: 1.7em;
   text-align: center;
   &:hover {
     background: lighten($brand-primary, 20%);
   }
 }
 
-.no-button {
-  border-top: 1px solid #ddd;
+.cal-add-button {
   border-left: 1px solid $off-black;
+  border-right: 1px solid #ddd;
+}
+
+.cal-view-button {
   border-right: 1px solid $off-black;
+}
+
+.no-add-button, .no-view-button {
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid $off-black;
   height: 20%%;
   color: #fff;
   font-size: 2em;
   text-align: center;
 }
+
+.no-add-button {
+  border-left: 1px solid $off-black;
+  border-right: 1px solid #ddd;
+}
+
+.no-view-button {
+  border-right: 1px solid $off-black;
+}
+
 
 .calendar a:hover {
   text-decoration: none;

@@ -32,13 +32,11 @@ class UsersController < ApplicationController
 
   def update_status
     @user = User.find_by_username(params[:username])
-    oldStatus = @user.status
     @user.update_attributes(status_params)
     if @user.save
-      redirect_to update_usernames_path(@user.username)
+      redirect_to usernames_path(@user.username)
     else
-      flash.now[:danger] = "Error: Failed to update status"
-      @user.update_attribute(:status, oldStatus)
+      flash.now[:danger] = "Error: Failed to update activity"
       render 'show'
     end
   end

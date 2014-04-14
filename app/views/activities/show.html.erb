@@ -1,8 +1,8 @@
 <% provide :title, @activity.name %>
 
 <h1 class="page-header">My Activity</h1>
-<form action="/users/<%= @user.username %>/activities/<%= @activity.id %>/update" class="update_activity" id="update_activity" method="patch">
-  <div id="Act_Pannel" class="panel panel-primary">
+<%= form_tag update_activity_path %>
+  <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">
         Info

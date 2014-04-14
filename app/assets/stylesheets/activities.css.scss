@@ -1,3 +1,17 @@
 // Place all the styles related to the Activities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Show Activity */
+td .form-control {
+  margin: 0px;
+}
+
+#Act_Sub {
+  float: right;
+}
+
+.table-input {
+  padding: 0px !important;
+  padding-top: 1px !important;
+}

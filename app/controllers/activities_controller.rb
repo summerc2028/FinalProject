@@ -28,6 +28,14 @@ class ActivitiesController < ApplicationController
   end
 
   def update
+    @activity = Activity.find_by_id(params[:id])
+    @activity.update_attributes(activity_params)
+    if @activity.save
+      redirect_to show_activity_path(username: @user.username, id: @activity.id)
+    else
+      flash.now[:danger] = "Error: Failed to update status"
+      render 'show'
+    end
   end
 
   def index

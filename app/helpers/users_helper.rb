@@ -12,10 +12,4 @@ module UsersHelper
 	def time_for(user)
 		user.to_formatted_s(:long_ordinal)
 	end
-
-	def sort_activities(activities)
-		current_time = Time.new
-		act_list = activities.select {|activity| current_time.strftime("%H%M") <= activity.time.strftime("%H%M")}
-    	return act_list.sort!{|x,y| x.time<=>y.time}
-	end
 end

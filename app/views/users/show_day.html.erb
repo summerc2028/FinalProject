@@ -1,19 +1,43 @@
-<h1 class="page-header">Daily View<small><%= @date.strf("%B %e, %Y") %></small></h1>
-<table>
-	<% @user.activities.each do |x| %>
-		<% if x.day.eql? @date %> 
+<h1 class="page-header">Daily View<small><%= @date.strftime("%B %e, %Y") %></small></h1>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Activities</h3>
+	</div>
+	<table class="table table-hover">
+		<thead>
 			<tr>
-			    <td>
-			    	<%= x.name %>
-			    </td>
+				<th>Name</th>
+				<th>Location</th>
+				<th>Time</th>
+				<th>Duration</th>
 			</tr>
-		<% end %>
-	<% end %>
-</table>
+		</thead>
+		<tbody>
+			<% @user.activities.each do |x| %>
+				<% if x.day.eql? @date %>
+					<tr>
+				    <td>
+				    	<%= x.name %>
+				    </td>
+						<td>
+							<%= x.location %>
+						</td>
+						<td>
+							<%= x.time.strftime("%l:%M %p") %>
+						</td>
+						<td>
+							<%= x.length %>
+						</td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+</div>
 
 <table>
 	<% @user.exercises.each do |x| %>
-		<% if x.day.eql? @date %> 
+		<% if x.day.eql? @date %>
 			<tr>
 			    <td>
 			    	<%= x.name %>

@@ -22,6 +22,10 @@ class ActivitiesController < ApplicationController
   def show
     @user = User.find_by_username(params[:username])
     @activity = Activity.find params[:id]
+    unless @user.activities.include? @activity
+      flash[:danger] = "Error: Invalid activity"
+      redirect_to usernames_path(params[:username])
+    end
   end
 
   def destroy

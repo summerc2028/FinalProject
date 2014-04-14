@@ -1,5 +1,4 @@
 <% provide :title, @activity.name %>
-
 <h1 class="page-header">My Activity</h1>
 <%= form_tag update_activity_path %>
 <%= render 'application/activity_error_messages' %>
@@ -30,7 +29,7 @@
         </tr>
         <tr>
           <td><b>Time:</b></td>
-          <td id="Act_Time"><%= @activity.time %></td>
+          <td id="Act_Time"><%= @activity.time.strftime("%l:%M %p") %></td>
         </tr>
         <tr>
           <td><b>Duration:</b></td>

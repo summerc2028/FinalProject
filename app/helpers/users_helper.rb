@@ -14,12 +14,8 @@ module UsersHelper
 	end
 
 	def find_activities(user, date)
-		act_list = Array.new
-    	user.activities.each do |activity|
-    		if activity.day.eql? date 
-    			act_list.push(activity)
-    		end
-    	end
+		current_time = Time.new
+		act_list = user.activities.select {|activity| activity.day.eql? date and current_time.strftime("%H%M") <= activity.time.strftime("%H%M")}
     	return act_list.sort!{|x,y| x.time<=>y.time}
 	end
 end

@@ -38,4 +38,4 @@ en:
         activity:
           attributes:
             length:
-              invalid: 'must be of the form hh:mm'
+              invalid: 'must be of the form hh:mm AM/PM'

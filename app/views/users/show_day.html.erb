@@ -28,6 +28,9 @@
 						<td>
 							<%= x.length %>
 						</td>
+						<td>
+							<%= link_to "View", show_activity_path(username: params[:username], id: x.id), class: "btn btn-primary" %>
+						</td>
 					</tr>
 				<% end %>
 			<% end %>

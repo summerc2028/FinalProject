@@ -78,22 +78,31 @@
 		</thead>	
 		<tbody>
 		 	<% @user.activities.each do |activity| %>
-	    	<tr>
-		    	<td>
-		      		<%= activity.name %>
-		      	</td>
-		      	<td>
-		      		<%= activity.time %>
-		      	</td>
-		      	<td>
-		      		<%= activity.location %>
-		      	</td>
-		      	<td>
-		      		<%= activity.length %>
-		      	</td>
-		    </tr>
-		  <% end %>
+ 				<% if activity.day.eql? @date %>
+			    	<tr>
+				    	<td>
+				      		<%= activity.name %>
+				      	</td>
+				      	<td>
+				      		<%= activity.day %>
+				      	</td>
+				      	<td>
+				      		<%= activity.location %>
+				      	</td>
+				      	<td>
+				      		<%= activity.length %>
+				      	</td>
+				    </tr>
+		    	<% end %>
+		  	<% end %>
 		</tbody>
 	</table>
 </div>
+<div class="panel panel-primary col-md-6">
+	<div class="panel-heading">
+		<h3 class="panel-title">Calorie Summary????</h3>
+	</div>
+	<p>We can put calorie stuff for today only here!</p>
+</div>
+
 

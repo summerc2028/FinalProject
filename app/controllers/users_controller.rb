@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:username])
+    @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
   end
 
   def show_day

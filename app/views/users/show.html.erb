@@ -25,12 +25,13 @@
 		<% end %>
 	</div>
 </div>
+<%= form_tag update_usernames_path(params[:username]) %>
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">
 			About
 			<% if current_user? User.find_by_username(params[:username]) %>
-				<button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
+				<button id="edit-profile" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>
 			<% end %>
@@ -40,24 +41,25 @@
 		<tbody>
 			<tr>
 				<td><b>Name:</b></td>
-				<td><%= "#{@user.fname} #{@user.lname}" %></td>
+				<td id="user-name"><%= "#{@user.fname} #{@user.lname}" %></td>
 			</tr>
 			<tr>
 				<td><b>Gender:</b></td>
-				<td><%= @user.gender %></td>
+				<td id="user-gender"><%= @user.gender %></td>
 			</tr>
 			<tr>
 				<td><b>Date of Birth:</b></td>
-				<td><%= birthdate_for @user %></td>
+				<td id="user-bdate"><%= birthdate_for @user %></td>
 			</tr>
 			<tr>
 				<td><b>Height:</b></td>
-				<td><%= @user.height %> Inches</td>
+				<td id="user-height"><%= @user.height %> Inches</td>
 			</tr>
 			<tr>
 				<td><b>Weight:</b></td>
-				<td><%= @user.weight %> Pounds</td>
+				<td id="user-weight"><%= @user.weight %> Pounds</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
+</form>

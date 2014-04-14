@@ -56,8 +56,41 @@ $( document ).ready(function() {
   // Tooltips
   $( "#edit" ).tooltip();
 
+  // Sorting of user index
   $("#userTable").tablesorter();
-	//.tablesorterPager({container: $("#pager")});
+
+  // Edit user profile
+  $('#edit-profile').click(function(){
+    var fname = $('#user-name').html().split(" ")[0];
+    var lname = $('#user-name').html().split(" ")[1];
+    var gender = $('#user-gender').html();
+    var bdate = $('#user-bdate').html();
+    var height = $('#user-height').html().split(" ")[0];
+    var weight = $('#user-weight').html().split(" ")[0];
+    $('#edit-profile').before("<button id='Act_Cancel' type='button' class='btn btn-default'>Cancel</button><input id='Act_Sub' name='commit' type='submit' class='btn btn-default' value='Submit' />");
+    $('#edit-profile').hide();
+    $('#user-name').replaceWith("<td class='table-input' id='user-name'><input class='form-control' type='text' name='fname' value='"+fname+"'/><input class='form-control' type='text' name='fname' value='"+lname+"'/></td>");
+    $('#user-gender').replaceWith('<td class="table-input" id="user-gender"><div class="btn-group" data-toggle="buttons"><label class="btn btn-primary"><input type="radio" name="gender" id="male" value="Male"> Male</label><label class="btn btn-primary"><input type="radio" name="gender" id="female" value="Female"> Female</label></div></td>');
+    $('#user-bdate').replaceWith("<td class='table-input' id='user-bdate'><input class='form-control datepicker' type='text' name='day' readonly='readonly' value='"+bdate+"'/></td>");
+    $('#user-height').replaceWith("<td class='table-input' id='user-height'><input class='form-control' type='text' name='time' value='"+height+"'/></td>");
+    $('#user-weight').replaceWith("<td class='table-input' id='user-weight'><input class='form-control' type='text' name='length' value='"+weight+"'/></td>");
+
+    $('#Act_Cancel').click(function(){
+      $('#edit-profile').show();
+      $('#user-name').replaceWith("<td id='user-name'>"+fname+" "+lname+"</td>");
+      $('#user-gender').replaceWith("<td id='user-gender'>"+gender+"</td>");
+      $('#user-bdate').replaceWith("<td id='user-bdate'>"+bdate+"</td>");
+      $('#user-height').replaceWith("<td id='user-height'>"+height+"</td>");
+      $('#user-weight').replaceWith("<td id='user-weight'>"+weight+"</td>");
+      $('#Act_Cancel').remove();
+      $('#Act_Sub').remove();
+    });
+
+    // Init calendar activity creation modals
+    $( ".datepicker" ).datepicker({
+      todayHighlight: true
+    });
+  });
 
 
 });

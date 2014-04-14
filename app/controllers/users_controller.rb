@@ -36,7 +36,19 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to usernames_path(@user.username)
     else
-      flash.now[:danger] = "Error: Failed to update activity"
+      flash.now[:danger] = "Error: Failed to update status"
+      render 'show'
+    end
+  end
+
+  def update
+    @user = User.find_by_username(params[:username])
+    @user.update_attributes(update_params)
+    if @user.save!
+      flash[:success] = "Profile Successfully Updated!"
+      redirect_to usernames_path(@user.username)
+    else
+      flash.now[:danger] = "Error: Failed to update profile"
       render 'show'
     end
   end
@@ -60,7 +72,11 @@ class UsersController < ApplicationController
     end
 
     def status_params
-      params.permit :username, :status
+      params.permit :status
+    end
+
+    def update_params
+      params.permit :fname, :lname, :gender, :birthdate, :height, :weight
     end
 
     def signed_in_user

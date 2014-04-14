@@ -11,7 +11,7 @@ class ActivitiesController < ApplicationController
     @user = User.find_by_username(params[:username])
     @activity = Activity.new(activity_params)
     @activity.update_attribute :user_id, @user.id
-    if @activity.save!
+    if @activity.save
       flash[:success] = "Activity Successfully Added!"
       redirect_to calendar_path(@user.username)
     else
@@ -37,7 +37,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to show_activity_path(username: @user.username, id: @activity.id)
     else
-      flash.now[:danger] = "Error: Failed to update status"
+      flash.now[:danger] = "Error: Failed to update activity"
       render 'show'
     end
   end

@@ -3,7 +3,7 @@ FinalProject::Application.routes.draw do
   # Users
   resources :users, except: [:show, :update]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
-  match "/users/:username", to: "users#update", via: "patch", as: "update_usernames"
+  match "/users/:username/update", to: "users#update", via: "post", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
   match "/users/:username/calendar", to: "users#calendar", via: "get", as: "calendar"
   match "/users/:username/status", to: "users#update_status", via: "post", as: "update_status"

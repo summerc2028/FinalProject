@@ -25,6 +25,9 @@ en:
       user:
         fname: "First name"
         lname: "Last name"
+      activity:
+        length: "Duration"
+        name: "Description"
     errors:
       models:
         user:
@@ -32,3 +35,7 @@ en:
             birthdate:
               invalid_date: 'must be on or before today'
               on_or_before: 'must be on or before today'
+        activity:
+          attributes:
+            length:
+              invalid: 'must be of the form hh:mm'

@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2' #used for testing
 gem 'bootstrap-sass'
 gem 'validates_timeliness', '~> 3.0'
 gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-timepicker-rails'
 gem 'american_date'
 gem 'faker'
 gem 'bcrypt-ruby', '~> 3.1.2'

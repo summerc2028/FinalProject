@@ -4,11 +4,16 @@
 
 $( document ).ready(function() {
 
+  //
+  $('#timepicker').timepicker();
+
   // Date picker element for user birthdate
   $( "#bday-picker" ).datepicker({
     endDate: new Date(),
     startView: "decade"
   });
+
+  $('#timepicker').timepicker();
 
   // Init calendar activity creation modals
   $( "#activity-date" ).datepicker({

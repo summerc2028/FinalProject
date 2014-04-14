@@ -82,7 +82,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% act_list = find_activities(@user,@date) %>
+						<% act_list = sort_activities(@day_activities) %>
 						<% act_list[0..3].each do |activity| %>
 							<tr>
 						    	<td>

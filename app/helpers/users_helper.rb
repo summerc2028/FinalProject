@@ -15,7 +15,7 @@ module UsersHelper
 
 	def sort_activities(activities)
 		current_time = Time.new
-		act_list = activities.select {current_time.strftime("%H%M") <= activity.time.strftime("%H%M")}
+		act_list = activities.select {|activity| current_time.strftime("%H%M") <= activity.time.strftime("%H%M")}
     	return act_list.sort!{|x,y| x.time<=>y.time}
 	end
 end

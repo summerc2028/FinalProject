@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by_username(params[:username])
     @user.update_attributes(update_params)
-    if @user.save!
+    if @user.save
       flash[:success] = "Profile Successfully Updated!"
       redirect_to usernames_path(@user.username)
     else

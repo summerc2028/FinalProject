@@ -10,12 +10,17 @@
 	</div>
 	<div class="panel-body">
 		<%= @user.status %>
-		<hr>
-		<%= form_tag update_status_path(@user.username) do %>
+		<% if current_user? User.find_by_username(params[:username]) %>
 
-		<%= text_field_tag :status, nil, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
+			<hr>
 
-		<%= submit_tag "Post", class: "btn btn-primary", id: "post-status", disabled: true %>
+			<%= form_tag update_status_path(@user.username) do %>
+
+			<%= text_field_tag :status, nil, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
+
+			<%= submit_tag "Post", class: "btn btn-primary", id: "post-status", disabled: true %>
+
+			<% end %>
 
 		<% end %>
 	</div>
@@ -24,9 +29,11 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">
 			About
-			<button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
-				<span class="glyphicon glyphicon-pencil"></span>
-			</button>
+			<% if current_user? User.find_by_username(params[:username]) %>
+				<button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+			<% end %>
 		</h3>
 	</div>
 	<table class="table table-hover">

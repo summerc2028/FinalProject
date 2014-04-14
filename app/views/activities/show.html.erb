@@ -7,9 +7,11 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         Info
-        <button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
-          <span class="glyphicon glyphicon-pencil"></span>
-        </button>
+        <% if current_user? User.find_by_username(params[:username]) %>
+          <button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        <% end %>
       </h3>
     </div>
     <table class="table table-hover">

@@ -12,4 +12,14 @@ module UsersHelper
 	def time_for(user)
 		user.to_formatted_s(:long_ordinal)
 	end
+
+	def find_activities(user, date)
+		act_list = Array.new
+    	user.activities.each do |activity|
+    		if activity.day.eql? date 
+    			act_list.push(activity)
+    		end
+    	end
+    	return act_list.sort!{|x,y| x.time<=>y.time}
+	end
 end

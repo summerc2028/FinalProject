@@ -69,11 +69,11 @@ $( document ).ready(function() {
     var weight = $('#user-weight').html().split(" ")[0];
     $('#edit-profile').before("<button id='Act_Cancel' type='button' class='btn btn-default'>Cancel</button><input id='Act_Sub' name='commit' type='submit' class='btn btn-default' value='Submit' />");
     $('#edit-profile').hide();
-    $('#user-name').replaceWith("<td class='table-input' id='user-name'><input class='form-control' type='text' name='fname' value='"+fname+"'/><input class='form-control' type='text' name='fname' value='"+lname+"'/></td>");
+    $('#user-name').replaceWith("<td class='table-input' id='user-name'><input class='form-control' type='text' name='fname' value='"+fname+"'/><input class='form-control' type='text' name='lname' value='"+lname+"'/></td>");
     $('#user-gender').replaceWith('<td class="table-input" id="user-gender"><div class="btn-group" data-toggle="buttons"><label class="btn btn-primary"><input type="radio" name="gender" id="male" value="Male"> Male</label><label class="btn btn-primary"><input type="radio" name="gender" id="female" value="Female"> Female</label></div></td>');
-    $('#user-bdate').replaceWith("<td class='table-input' id='user-bdate'><input class='form-control datepicker' type='text' name='day' readonly='readonly' value='"+bdate+"'/></td>");
-    $('#user-height').replaceWith("<td class='table-input' id='user-height'><input class='form-control' type='text' name='time' value='"+height+"'/></td>");
-    $('#user-weight').replaceWith("<td class='table-input' id='user-weight'><input class='form-control' type='text' name='length' value='"+weight+"'/></td>");
+    $('#user-bdate').replaceWith("<td class='table-input' id='user-bdate'><input class='form-control datepicker' type='text' name='birthdate' readonly='readonly' value='"+bdate+"'/></td>");
+    $('#user-height').replaceWith("<td class='table-input' id='user-height'><input class='form-control' type='text' name='height' value='"+height+"'/></td>");
+    $('#user-weight').replaceWith("<td class='table-input' id='user-weight'><input class='form-control' type='text' name='weight' value='"+weight+"'/></td>");
 
     $('#Act_Cancel').click(function(){
       $('#edit-profile').show();

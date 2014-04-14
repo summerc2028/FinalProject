@@ -1,37 +1,39 @@
 <% provide :title, @activity.name %>
 
 <h1 class="page-header">My Activity</h1>
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      Info
-      <button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
-        <span class="glyphicon glyphicon-pencil"></span>
-      </button>
-    </h3>
+<form action="/users/<%= @user.username %>/activities/<%= @activity.id %>/update" class="update_activity" id="update_activity" method="patch">
+  <div id="Act_Pannel" class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Info
+        <button id="edit" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </h3>
+    </div>
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <td><b>Description:</b></td>
+          <td id="Act_Desc"><%= @activity.name %></td>
+        </tr>
+        <tr>
+          <td><b>Location:</b></td>
+          <td id="Act_Loc"><%= @activity.location %></td>
+        </tr>
+        <tr>
+          <td><b>Date:</b></td>
+          <td id="Act_Date"><%= date_for @activity %></td>
+        </tr>
+        <tr>
+          <td><b>Time:</b></td>
+          <td id="Act_Time"><%= @activity.time %></td>
+        </tr>
+        <tr>
+          <td><b>Duration:</b></td>
+          <td id="Act_Dur"><%= @activity.length %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="table table-hover">
-    <tbody>
-      <tr>
-        <td><b>Description:</b></td>
-        <td><%= @activity.name %></td>
-      </tr>
-      <tr>
-        <td><b>Location:</b></td>
-        <td><%= @activity.location %></td>
-      </tr>
-      <tr>
-        <td><b>Date:</b></td>
-        <td><%= date_for @activity %></td>
-      </tr>
-      <tr>
-        <td><b>Time:</b></td>
-        <td><%= @activity.time %></td>
-      </tr>
-      <tr>
-        <td><b>Duration:</b></td>
-        <td><%= @activity.length %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+</form>

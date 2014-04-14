@@ -1,4 +1,4 @@
-<h1 class="page-header">Daily View<small><%= @date.strftime("%B %e, %Y") %></small></h1>
+<h1 class="page-header">Daily View<small><%= @date.strf("%B %e, %Y") %></small></h1>
 <table>
 	<% @user.activities.each do |x| %>
 		<% if x.day.eql? @date %> 

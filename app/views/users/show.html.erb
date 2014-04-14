@@ -84,7 +84,7 @@
 				      		<%= activity.name %>
 				      	</td>
 				      	<td>
-				      		<%= activity.day %>
+				      		<%= activity.time.strftime("%H:%M") %> <!-- (%I:%M) if we use 12 hr clock -->
 				      	</td>
 				      	<td>
 				      		<%= activity.location %>

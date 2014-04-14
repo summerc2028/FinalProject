@@ -9,19 +9,19 @@
         <%= render 'application/activity_error_messages' %>
 
         <%= label_tag :name, "What exercise did you do?"%>
-        <%= text_field_tag :name, class: "form-control" %>
+        <%= text_field_tag :name, nil, class: "form-control" %>
 
         <%= label_tag :day, "Which day?"%>
-        <%= text_field_tag :day, class: "form-control" %>
+        <%= text_field_tag :day, nil, class: "form-control" %>
 
         <%= label_tag :time, "What time?"%>
-        <%= text_field_tag :time, class: "form-control" %>
+        <%= text_field_tag :time, nil, class: "form-control" %>
 
         <%= label_tag :length, "For how long?"%>
-        <%= text_field_tag :length, class: "form-control" %>
+        <%= text_field_tag :length, nil, class: "form-control" %>
 
         <%= label_tag :location, "Location"%>
-        <%= text_field_tag :location, class: "form-control" %>
+        <%= text_field_tag :location, nil, class: "form-control" %>
 
         <%= submit_tag "Save", class: "btn btn-large btn-primary", id: "create-activity" %>
       <% end %>

@@ -1,13 +1,13 @@
-<% provide(:title, "Exercise and food") %>
+<% provide(:title, "Exercise and Food") %>
 
-<h1 class="page-header">Exercise and food</h1>
+<h1 class="page-header">Exercise and Food</h1>
 <%= render 'application/error_messages' %>
 
 <div class="row">
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Recent exercises
+				<h3 class="panel-title">Recent Exercises
 					<%= link_to enter_exercise_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New exercise" do %>
 					<span class="glyphicon glyphicon-plus glyph-button"></span>
 					<% end %>
@@ -44,7 +44,7 @@
 						</tbody>
 					</table>
 				<% else %>
-					<h4 class="text-center">There Are No Exercise Information, Please Add One.</h4>
+					<h4 class="text-center">There Is No Exercise Information, Please Add One.</h4>
 				<% end %>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Recent foods
+				<h3 class="panel-title">Recent Foods
 					<%= link_to enter_food_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New food item" do %>
 					<span class="glyphicon glyphicon-plus glyph-button"></span>
 					<% end %>
@@ -60,7 +60,7 @@
 			</div>
 
 			<div class="panel-body">
-				<h4 class="text-center">There Are No Food Information, Please Add One.</h4>
+				<h4 class="text-center">There Is No Food Information, Please Add One.</h4>
 			</div>
 		</div>
 	</div>
@@ -69,7 +69,7 @@
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Calories lost today</h3>
+				<h3 class="panel-title">Calories Lost Today</h3>
 			</div>
 			<div class="panel-body">
 				<h4 class="text-center">No Food Or Exercise Information Available, Please Add One</h4>
@@ -79,13 +79,13 @@
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Calories lost this week</h3>
+				<h3 class="panel-title">Calories Lost This Week</h3>
 			</div>
 			<div class="panel-body">
 				<h4 class="text-center">No Food Or Exercise Information Available, Please Add One</h4>
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
 
 <!-- <%= line_chart @user.exercises.group(:day).count %> -->

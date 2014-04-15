@@ -1,7 +1,8 @@
 class FoodsController < ApplicationController
+  layout "layouts/users"
+
   before_filter :authenticate
   before_filter :correct_user
-  layout "layouts/users", except: [:new, :index]
 
   def new
     @food = Food.new

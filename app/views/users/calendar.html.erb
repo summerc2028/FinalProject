@@ -23,7 +23,7 @@
       <div class="cal-content">
       <%= date.day %>
         <ul>
-          <% activities.each do |activity| %>
+          <% activities[0..5].each do |activity| %>
               <li><%= link_to activity.name.upcase, show_activity_path(username: current_user.username, id: activity.id) %></li>
           <% end %>
         </ul>

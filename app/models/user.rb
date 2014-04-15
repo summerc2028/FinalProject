@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
 	before_create :generate_token
 	validates :auth_token, uniqueness: { case_sensitive: false }
 
-	has_many :activities
-	has_many :exercises
-	has_many :foods
+	has_many :activities, dependent: :destroy
+	has_many :exercises, dependent: :destroy
+	has_many :foods, dependent: :destroy
 
 	private
 

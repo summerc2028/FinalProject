@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+	has_many :activities, dependent: :destroy, validate: true
+	has_many :exercises, dependent: :destroy, validate: true
+	has_many :foods, dependent: :destroy, validate: true
+
 	before_save { email.downcase! }
 	before_save { username.downcase! }
 
@@ -17,10 +21,6 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 8 }, on: :create
 	before_create :generate_token
 	validates :auth_token, uniqueness: { case_sensitive: false }
-
-	has_many :activities, dependent: :destroy
-	has_many :exercises, dependent: :destroy
-	has_many :foods, dependent: :destroy
 
 	private
 

@@ -19,7 +19,7 @@ FinalProject::Application.routes.draw do
   match "/help", to: "static_pages#help", via: "get"
 
   #Foods
-  resources :foods, only: [:new, :create, :show, :index, :destroy]
+  resources :foods, only: [:create, :show, :index]
   match "/users/:username/enter_food", to: "foods#new", via: "get"
   match "/users/:username/remove_food", to: "foods#destroy", via: "delete"
   match "/users/:username/update_food", to: "foods#update", via: "get"
@@ -34,7 +34,7 @@ FinalProject::Application.routes.draw do
 
 
   #Exercises
-  resources :exercises, only: [:new, :create, :show, :index, :destroy]
+  resources :exercises, only: [:create, :show, :index]
   match "/users/:username/enter_exercise", to: "exercises#new", via: "get"
   match "/users/:username/remove_exercise", to: "exercises#destroy", via: "delete"
   match "/users/:username/update_exercise", to: "exercises#update", via: "get"

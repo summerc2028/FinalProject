@@ -9,6 +9,14 @@ $( document ).ready(function() {
     pickDate: false
   });
 
+  $('#exercise-timepicker').datetimepicker({
+    pickDate: false
+  });
+
+  $('#food-timepicker').datetimepicker({
+    pickDate: false
+  });
+
   // Date picker element for user birthdate
   $( "#bday-picker" ).datetimepicker({
     pickTime: false
@@ -23,6 +31,14 @@ $( document ).ready(function() {
 
   // Init calendar activity, exercise and food creation modals
   $( "#activity-date" ).datetimepicker({
+    pickTime: false
+  });
+
+  $( "#exercise-date" ).datetimepicker({
+    pickTime: false
+  });
+
+  $( "#food-date" ).datetimepicker({
     pickTime: false
   });
   // Remove the add button functionality from .notmonth

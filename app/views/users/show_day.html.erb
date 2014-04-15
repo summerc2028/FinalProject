@@ -49,17 +49,4 @@
 		</div>
 
 	<% end %>
-
 </div>
-
-<table>
-	<% @user.exercises.each do |x| %>
-		<% if x.day.eql? @date %>
-			<tr>
-			    <td>
-			    	<%= x.name %>
-			    </td>
-			</tr>
-		<% end %>
-	<% end %>
-</table>

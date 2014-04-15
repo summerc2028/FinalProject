@@ -15,7 +15,9 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap.min
-//= require bootstrap-datepicker
-//= require bootstrap-timepicker
 //= require jquery-tablesorter
 //= require turbolinks
+//= require jsapi
+//= require chartkick
+//= require moment
+//= require bootstrap-datetimepicker

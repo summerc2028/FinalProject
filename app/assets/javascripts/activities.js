@@ -29,8 +29,9 @@ $( document ).ready(function() {
 		});
 
 		// Init calendar activity creation modals
-		$( ".datepicker" ).datepicker({
-			todayHighlight: true
+		$( ".datepicker" ).datetimepicker({
+			pickTime: false
+			//todayHighlight: true
 		});
 	});
 

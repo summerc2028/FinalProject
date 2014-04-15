@@ -9,7 +9,8 @@ module ApplicationHelper
     end
   end
 
-  def is_active(action)
-    params[:action] == action ? "active" : nil
+  def is_active(controller, action)
+    params[:controller] == controller and params[:action] == action ? "active" : nil
   end
+
 end

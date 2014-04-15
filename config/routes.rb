@@ -22,11 +22,12 @@ FinalProject::Application.routes.draw do
   match "/help", to: "static_pages#help", via: "get"
 
   #Foods
-  resources :foods, only: [:create, :show, :index]
+  resources :foods, only: [:index]
   match "/users/:username/enter_food", to: "foods#new", via: "get", as: "enter_food"
-  match "/users/:username/remove_food", to: "foods#destroy", via: "delete"
-  match "/users/:username/update_food", to: "foods#update", via: "get"
-
+  match "/users/:username/remove_food", to: "foods#destroy", via: "get", as: "delete_food"
+  match "/users/:username/foods/:id/update_food", to: "foods#update", via: "post", as: "update_food"
+  match "/users/:username/create_food", to: "foods#create", via: "post", as: "create_food"
+  match "/users/:username/food_item/:id", to: "foods#show", via: "get", as: "show_food"
 
   #Activities
   resources :activities, only: [:index]

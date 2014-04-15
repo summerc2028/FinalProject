@@ -29,7 +29,7 @@ FinalProject::Application.routes.draw do
   match "/users/:username/enter_activity", to: "activities#new", via: "get", as: "new_activity"
   match "/users/:username/create_activity", to: "activities#create", via: "post", as: "create_activity"
   match "/users/:username/single-view/:id", to: "activities#show", via: "get", as: "show_activity"
-  match "/users/:username/remove_activity", to: "activities#destroy", via: "delete"
+  match "/users/:username/remove_activity/:id", to: "activities#destroy", via: "get", as: "delete_activity"
   match "/users/:username/activities/:id/update", to: "activities#update", via: "post", as: "update_activity"
 
 

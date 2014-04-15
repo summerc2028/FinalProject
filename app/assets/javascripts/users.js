@@ -60,6 +60,7 @@ $( document ).ready(function() {
 
   // Tooltips
   $( "#edit" ).tooltip();
+  $( "#new-act" ).tooltip();
 
   // Sorting of user index
   $("#userTable").tablesorter();

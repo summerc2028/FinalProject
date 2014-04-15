@@ -5,19 +5,22 @@
 $( document ).ready(function() {
 
   //
-  $('#timepicker').timepicker();
-
-  // Date picker element for user birthdate
-  $( "#bday-picker" ).datepicker({
-    endDate: new Date(),
-    startView: "decade"
+  $('#timepicker').datetimepicker({
+    pickDate: false
   });
 
-  $('#timepicker').timepicker();
+  // Date picker element for user birthdate
+  $( "#bday-picker" ).datetimepicker({
+    pickTime: false
+  }).data("DateTimePicker").setMaxDate(new Date());
+
+  $('#timepicker').datetimepicker({
+    pickDate: false
+  });
 
   // Init calendar activity, exercise and food creation modals
-  $( "#activity-date" ).datepicker({
-    todayHighlight: true
+  $( "#activity-date" ).datetimepicker({
+    pickTime: false
   });
   // Remove the add button functionality from .notmonth
   $( ".notmonth .cal-add-button" ).addClass("no-add-button");
@@ -93,8 +96,8 @@ $( document ).ready(function() {
     });
 
     // Init calendar activity creation modals
-    $( ".datepicker" ).datepicker({
-      todayHighlight: true
+    $( ".datepicker" ).datetimepicker({
+      pickTime: false
     });
   });
 

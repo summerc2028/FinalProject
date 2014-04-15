@@ -3,6 +3,8 @@
 
 $( document ).ready(function() {
 
-	$('#timepicker').timepicker();
+	$('#timepicker').datetimepicker({
+		pickDate: false
+	});
 
 });

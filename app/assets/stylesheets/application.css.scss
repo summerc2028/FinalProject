@@ -9,11 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap-datepicker3
- *= require bootstrap-timepicker
  */
 
 @import "custom.css.scss";
 @import "users.css.scss";
 @import "activities.css.scss";
 @import "sessions.css.scss";
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';

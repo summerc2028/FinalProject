@@ -8,7 +8,7 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Recent Exercises
-					<%= link_to enter_exercise_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New exercise" do %>
+					<%= link_to enter_exercise_path(params[:username]), id: "new-exercise", class: "btn btn-default", title: "New Exercise" do %>
 					<span class="glyphicon glyphicon-plus glyph-button"></span>
 					<% end %>
 				</h3>
@@ -53,7 +53,7 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Recent Foods
-					<%= link_to enter_food_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New food item" do %>
+					<%= link_to enter_food_path(params[:username]), id: "new-food", class: "btn btn-default", title: "New Food Item" do %>
 					<span class="glyphicon glyphicon-plus glyph-button"></span>
 					<% end %>
 				</h3>
@@ -89,3 +89,57 @@
 </div>
 
 <!-- <%= line_chart @user.exercises.group(:day).count %> -->
+
+<!-- New Exercise Modal -->
+<div class="modal fade" id="new-activity-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- New Exercise Form -->
+			<%= form_tag create_exercise_path(params[:username]) do %>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">New Exercise</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-10 col-md-offset-1">
+						<div class = "row">
+							<div class="col-xs-5">
+								<%= label_tag :name, "Exercise Description" %>
+								<%= text_field_tag :name, nil, class: "form-control" %>
+							</div>
+							<div class="col-xs-5">
+								<%= label_tag :length, "Duration" %>
+								<%= text_field_tag :length, nil, class: "form-control" %>
+							</div>
+						</div>
+						<div class = "row">
+							<div class="col-xs-5">
+								<%= label_tag :day %>
+								<div class="form-group">
+									<div class="input-group date" id="activity-date">
+										<%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
+										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-5">
+								<%= label_tag :time %>
+								<div class="input-group date" id="timepicker" >
+									<%= text_field_tag :time, nil, class: "form-control", readonly: true %>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<%= submit_tag "Submit", class: "btn btn-primary" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

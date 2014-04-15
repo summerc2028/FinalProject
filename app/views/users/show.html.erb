@@ -30,15 +30,12 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">
 			About
-
+			<% if current_user? User.find_by_username(params[:username]) %>
+				<button id="edit-profile" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+			<% end %>
 		</h3>
-
-		<% if current_user? User.find_by_username(params[:username]) %>
-			<button id="edit-profile" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">
-				<span class="glyphicon glyphicon-pencil"></span>
-			</button>
-		<% end %>
-
 	</div>
 	<table class="table table-hover">
 		<tbody>

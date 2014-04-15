@@ -1,7 +1,7 @@
 FinalProject::Application.routes.draw do
 
   # Users
-  resources :users, except: [:show, :update]
+  resources :users, except: [:show, :update, :destroy]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
   match "/users/:username/update", to: "users#update", via: "post", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
@@ -9,6 +9,9 @@ FinalProject::Application.routes.draw do
   match "/users/:username/status", to: "users#update_status", via: "post", as: "update_status"
   match "/users/:username/day-view", to: "users#show_day", via: "get", as: "show_day"
   match "/users/:username/exercise_food", to: "users#exercise_food", via: "get", as: "exercise_food"
+  match "/users/:username/settings", to: "users#settings", via: "get", as: "settings"
+  match "/users/:username/destroy", to: "users#destroy", via: "delete", as: "destroy_usernames"
+
   # Sessions
   resources :sessions, only: [:create]
   match "/signin", to: "sessions#new", via: "get"

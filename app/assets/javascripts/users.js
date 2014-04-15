@@ -15,7 +15,7 @@ $( document ).ready(function() {
 
   $('#timepicker').timepicker();
 
-  // Init calendar activity creation modals
+  // Init calendar activity, exercise and food creation modals
   $( "#activity-date" ).datepicker({
     todayHighlight: true
   });

@@ -1,0 +1,49 @@
+<% provide(:title, "Exercise and food") %>
+
+<h1 class="page-header">Exercise and food</h1>
+<%= render 'application/error_messages' %>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Recent exercises
+					<%= link_to enter_exercise_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New exercise" do %>
+					<span class="glyphicon glyphicon-plus glyph-button"></span>
+					<% end %>
+				</h3>
+			</div>
+			<p>A list of recent exercise information</p>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Recent foods
+					<%= link_to enter_food_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New food item" do %>
+					<span class="glyphicon glyphicon-plus glyph-button"></span>
+					<% end %>
+				</h3>
+			</div>
+			<p>A list of recent foods information</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Calories lost today</h3>
+			</div>
+			<p>information about calories lost in one day</p>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Calories lost this week</h3>
+			</div>
+			<p>information about calories lost in one week</p>
+		</div>
+	</div>
+</div>

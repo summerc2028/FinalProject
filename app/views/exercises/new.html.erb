@@ -10,22 +10,22 @@
         <%= f.label :name, "Exercise description"%>
         <%= f.text_field :name, class: "form-control" %>
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-5">
         <%= f.label :length, "Length"%>
         <div class="input-group">
           <%= f.text_field :length, class: "form-control" %>
-          <span class="input-group-addon">Minutes</span>
+          <span class="input-group-addon">minutes</span>
         </div>
       </div>
-      <div class="col-xs-5">
-        <%= f.label :day %>
-        <div class="form-group">
-          <div class="input-group date" id="bday-picker" data-date-format="mm/dd/yyyy">
-            <%= f.text_field :day, class: "form-control", readonly: true %>
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-          </div>
-        </div>
-      </div>
+              <div class="col-xs-5">
+                <%= label_tag :day %>
+                <div class="form-group">
+                  <div class="input-group date" id="activity-date" data-date-format="m/d/yyyy">
+                    <%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                  </div>
+                </div>
+              </div>
 
       <div class="col-xs-5">
         <%= f.label :time %>
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="col-xs-12">
-        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-food" %>
+        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-exercise" %>
       </div>
       <% end %>
     </div>

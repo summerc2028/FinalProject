@@ -8,7 +8,7 @@ FinalProject::Application.routes.draw do
   match "/users/:username/calendar", to: "users#calendar", via: "get", as: "calendar"
   match "/users/:username/status", to: "users#update_status", via: "post", as: "update_status"
   match "/users/:username/day-view", to: "users#show_day", via: "get", as: "show_day"
-
+  match "/users/:username/exercise_food", to: "users#exercise_food", via: "get", as: "exercise_food"
   # Sessions
   resources :sessions, only: [:create]
   match "/signin", to: "sessions#new", via: "get"
@@ -20,9 +20,10 @@ FinalProject::Application.routes.draw do
 
   #Foods
   resources :foods, only: [:create, :show, :index]
-  match "/users/:username/enter_food", to: "foods#new", via: "get"
+  match "/users/:username/enter_food", to: "foods#new", via: "get", as: "enter_food"
   match "/users/:username/remove_food", to: "foods#destroy", via: "delete"
   match "/users/:username/update_food", to: "foods#update", via: "get"
+
 
   #Activities
   resources :activities, only: [:index]
@@ -35,7 +36,7 @@ FinalProject::Application.routes.draw do
 
   #Exercises
   resources :exercises, only: [:create, :show, :index]
-  match "/users/:username/enter_exercise", to: "exercises#new", via: "get"
+  match "/users/:username/enter_exercise", to: "exercises#new", via: "get", as: "enter_exercise"
   match "/users/:username/remove_exercise", to: "exercises#destroy", via: "delete"
   match "/users/:username/update_exercise", to: "exercises#update", via: "get"
 

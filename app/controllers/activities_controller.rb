@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  layout "layouts/users", except: [:new, :index]
+  layout "layouts/users"
 
   before_filter :authenticate
   before_filter :correct_user

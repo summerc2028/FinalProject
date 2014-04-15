@@ -1,6 +1,9 @@
 class Exercise < ActiveRecord::Base
 	belongs_to :user, validate:true
-    validates :name, presence: true, length: { maximum: 50 }
+
+	default_scope -> { order('time ASC') }
+
+	validates :name, presence: true, length: { maximum: 50 }
   	validates :day, presence: true
 	validates :time, presence: true
  	validates :calories, presence: true, numericality: { only_integer: true }
@@ -16,5 +19,4 @@ class Exercise < ActiveRecord::Base
         false
       end
     end
-
 end

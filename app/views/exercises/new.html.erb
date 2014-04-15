@@ -1,4 +1,4 @@
-<% provide(:title, 'Exercise info') %>
+<% provide(:title, 'New Exercise') %>
 
 <div class="container">
   <div class="row">
@@ -7,7 +7,7 @@
       <%= form_tag create_exercise_path(params[:username]) do %>
       <%= render 'application/exercise_error_messages' %>
       <div class="col-xs-5">
-        <%= label_tag :name, "Exercise description"%>
+        <%= label_tag :name, "Exercise Description"%>
         <%= text_field_tag :name, nil, class: "form-control" %>
       </div>
       <div class="col-xs-5">
@@ -33,6 +33,7 @@
             <%= text_field_tag :time, nil, class: "form-control", readonly: true %>
             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
           </div>
+        </div>
       <div class="col-xs-12">
         <%= submit_tag "Save", class: "btn btn-large btn-primary", id: "create-exercise" %>
       </div>

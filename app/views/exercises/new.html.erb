@@ -17,20 +17,20 @@
           <span class="input-group-addon">minutes</span>
         </div>
       </div>
-              <div class="col-xs-5">
-                <%= label_tag :day %>
-                <div class="form-group">
-                  <div class="input-group date" id="activity-date" data-date-format="m/d/yyyy">
-                    <%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                  </div>
-                </div>
-              </div>
+      <div class="col-xs-5">
+        <%= label_tag :day %>
+        <div class="form-group">
+          <div class="input-group date" id="activity-date" data-date-format="m/d/yyyy">
+            <%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </div>
+      </div>
 
       <div class="col-xs-5">
         <%= f.label :time %>
         <div class="input-group bootstrap-timepicker">
-          <input id="timepicker" type="text" class="form-control" name="food[time]">
+          <input id="timepicker" type="text" class="form-control" name="exercise[time]">
         </div>
       </div>
       <div class="col-xs-12">

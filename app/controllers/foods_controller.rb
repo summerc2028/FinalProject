@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   before_filter :authenticate
   before_filter :correct_user
+  layout "layouts/users", except: [:new, :index]
 
 
   def new
@@ -8,6 +9,15 @@ class FoodsController < ApplicationController
   end
 
   def create
+    @user = User.find_by_username(params[:username])
+    @food = Food.new(food_params)
+    @food.update_attribute :user_id, @user.id
+    if @food.save
+      flash[:success] = "Food Item Successfully Added!"
+      redirect_to exercise_food_path(@user.username)
+    else
+      render 'new'
+    end
   end
 
   def destroy

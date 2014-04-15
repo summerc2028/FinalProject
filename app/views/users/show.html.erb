@@ -70,7 +70,7 @@
 				<h3 class="panel-title">Today's Upcoming Activities</h3>
 			</div>
 			<% if @day_activities.empty? %>
-				<h4 class="text-center">There Are No Activities Today</h4>
+				<h4 class="text-center">There Are No Activities Scheduled Today</h4>
 			<% else %>
 				<% act_list = limit_activity(@day_activities) %>
 				<% if act_list.empty? %>
@@ -86,21 +86,21 @@
 							</tr>
 						</thead>
 						<tbody>
-								<% act_list[0..3].each do |activity| %>
-									<tr>
-								    	<td>
-							      			<%= activity.name %>
-							      		</td>
-							      		<td>
-							      			<%= activity.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
-							      		</td>
-							      		<td>
-							      			<%= activity.location %>
-							      		</td>
-							      		<td>
-							      			<%= activity.length %>
-							      		</td>
-								    </tr>
+							<% act_list[0..3].each do |activity| %>
+								<tr>
+							    	<td>
+						      			<%= link_to activity.name, show_activity_path(username: params[:username], id: activity.id) %>
+						      		</td>
+						      		<td>
+						      			<%= activity.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
+						      		</td>
+						      		<td>
+						      			<%= activity.location %>
+						      		</td>
+						      		<td>
+						      			<%= activity.length %>
+						      		</td>
+							    </tr>
 							<% end %>
 						</tbody>
 					</table>	

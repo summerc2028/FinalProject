@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 
+	// Toggle form for activity update
 	$('#edit-activity').click(function(){
 		var desc = $('#Act_Desc').html();
 		var loc = $('#Act_Loc').html();
@@ -8,6 +9,7 @@ $( document ).ready(function() {
 		var dur = $('#Act_Dur').html();
 		$('#edit-activity').before("<button id='Act_Cancel' type='button' class='btn btn-default'>Cancel</button><input id='Act_Sub' name='commit' type='submit' class='btn btn-default' value='Submit' />");
 		$('#edit-activity').hide();
+		$('#del-activity').hide();
 		$('#Act_Desc').replaceWith("<td class='table-input' id='Act_Desc'><input class='form-control' type='text' name='name' value='"+desc+"'/></td>");
 		$('#Act_Loc').replaceWith("<td class='table-input' id='Act_Loc'><input class='form-control' type='text' name='location' value='"+loc+"'/></td>");
 		$('#Act_Date').replaceWith("<td class='table-input' id='Act_Date'><input class='form-control datepicker' type='text' name='day' readonly='readonly' value='"+date+"'/></td>");
@@ -16,6 +18,7 @@ $( document ).ready(function() {
 
 		$('#Act_Cancel').click(function(){
 			$('#edit-activity').show();
+			$('#del-activity').show();
 			$('#Act_Desc').replaceWith("<td id='Act_Desc'>"+desc+"</td>");
 			$('#Act_Loc').replaceWith("<td id='Act_Loc'>"+loc+"</td>");
 			$('#Act_Date').replaceWith("<td id='Act_Date'>"+date+"</td>");
@@ -30,4 +33,8 @@ $( document ).ready(function() {
 			todayHighlight: true
 		});
 	});
+
+	// Tooltips
+	$('#edit-activity').tooltip();
+	$('#del-activity').tooltip();
 });

@@ -18,27 +18,29 @@
 </h1>
 <div class="calendar">
   <%= calendar_for @activities, year: @date.year, month: @date.month do |cal| %>
-  <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
-  <%= cal.day(day_method: :day) do |date, activities| %>
-  <div class="cal-content">
-    <%= date.day %>
-    <ul>
-      <% activities.each do |activity| %>
-      <li><%= link_to activity.name.upcase, show_activity_path(username: current_user.username, id: activity.id) %></li>
-      <% end %>
-    </ul>
-  </div>
-  <table class="cal-buttons">
-    <tr>
-      <td>
-        <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
-      </td>
-      <td>
-        <div class="cal-view-button"><span class="glyphicon glyphicon-zoom-in"></span></div>
-      </td>
-    </tr>
-  </table>
-  <% end %>
+
+    <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
+    <%= cal.day(day_method: :day) do |date, activities| %>
+      <div class="cal-content">
+      <%= date.day %>
+        <ul>
+          <% activities[0..5].each do |activity| %>
+              <li><%= link_to activity.name.upcase, show_activity_path(username: current_user.username, id: activity.id) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <table class="cal-buttons">
+        <tr>
+            <td>
+              <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
+            </td>
+            <td>
+              <div class="cal-view-button"><span class="glyphicon glyphicon-zoom-in"></span></div>
+            </td>
+          </tr>
+      </table>
+    <% end %>
+
   <% end %>
 </div>
 

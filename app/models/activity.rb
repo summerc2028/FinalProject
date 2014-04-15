@@ -1,5 +1,5 @@
 class Activity < ActiveRecord::Base
-  before_save { length.upcase! }
+  default_scope -> { order('time ASC') }
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :day, presence: true
@@ -9,7 +9,7 @@ class Activity < ActiveRecord::Base
   validates :location, presence: true, length: { maximum: 16 }
   validate :user_id_exists
 
-  belongs_to :user
+  belongs_to :user, autosave: false
 
   private
 

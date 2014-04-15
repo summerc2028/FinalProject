@@ -12,4 +12,9 @@ module UsersHelper
 	def time_for(user)
 		user.to_formatted_s(:long_ordinal)
 	end
+
+	def limit_activity(activities)
+		current_time = Time.new
+		return activities.select {|activity| current_time.strftime("%H%M")<=activity.time.strftime("%H%M")}
+	end
 end

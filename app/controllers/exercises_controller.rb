@@ -1,4 +1,6 @@
 class ExercisesController < ApplicationController
+  layout "layouts/users"
+
   before_filter :authenticate
   before_filter :correct_user
 
@@ -46,12 +48,14 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.permit(:name, :day, :time, :length)
+    params.permit(:name, :day, :time, :calories)
   end
 
   def authenticate
-    flash.now[:danger] = 'Cannot Add Exercise, Please Sign In!'
-    redirect_to("/signin") if current_user.nil?
+    unless signed_in?
+      flash.now[:danger] = 'Cannot Add Exercise, Please Sign In!'
+      redirect_to("/signin") if current_user.nil?
+    end
   end
 
   def correct_user

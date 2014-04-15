@@ -17,7 +17,7 @@
         <li class="<%= is_active 'show'%>"><%= link_to "Profile", usernames_path(current_user.username) if current_user %></li>
         <li class="<%= is_active 'show_day'%>"><%= link_to "Activity", show_day_path(params[:username]) %></li>
         <li class="<%= is_active 'calendar'%>"><%= link_to "Calendar", calendar_path(current_user.username) if current_user %></li>
-        <li class="<%=is_active 'exercise'%>"><%= link_to "Exercise and food", exercise_path(current_user.username) if current_user %></li>
+        <li class="<%=is_active 'exercise_food'%>"><%= link_to "Exercise and food", exercise_food_path(params[:username]) %></li>
 
         <li><a href="#">Settings</a></li>
       </ul>

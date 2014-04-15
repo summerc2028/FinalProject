@@ -6,39 +6,39 @@
   <small><%= @year %></small>
   <div class="btn-group date-select">
     <%= link_to date: @date.prev_month do %>
-      <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+    <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
     <% end %>
     <%= link_to date: Date.today do %>
-      <button class="btn btn-default">Today</button>
+    <button class="btn btn-default">Today</button>
     <% end %>
     <%= link_to date: @date.next_month do %>
-      <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></button>
+    <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></button>
     <% end %>
   </div>
 </h1>
 <div class="calendar">
   <%= calendar_for @activities, year: @date.year, month: @date.month do |cal| %>
-    <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
-    <%= cal.day(day_method: :day) do |date, activities| %>
-      <div class="cal-content">
-      <%= date.day %>
-        <ul>
-          <% activities.each do |activity| %>
-              <li><%= link_to activity.name.upcase, show_activity_path(username: current_user.username, id: activity.id) %></li>
-          <% end %>
-        </ul>
-      </div>
-      <table class="cal-buttons">
-        <tr>
-            <td>
-              <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
-            </td>
-            <td>
-              <div class="cal-view-button"><span class="glyphicon glyphicon-zoom-in"></span></div>
-            </td>
-          </tr>
-      </table>
-    <% end %>
+  <%= cal.head('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday') %>
+  <%= cal.day(day_method: :day) do |date, activities| %>
+  <div class="cal-content">
+    <%= date.day %>
+    <ul>
+      <% activities.each do |activity| %>
+      <li><%= link_to activity.name.upcase, show_activity_path(username: current_user.username, id: activity.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <table class="cal-buttons">
+    <tr>
+      <td>
+        <div class="cal-add-button"><span class="glyphicon glyphicon-plus"></span></div>
+      </td>
+      <td>
+        <div class="cal-view-button"><span class="glyphicon glyphicon-zoom-in"></span></div>
+      </td>
+    </tr>
+  </table>
+  <% end %>
   <% end %>
 </div>
 
@@ -49,17 +49,32 @@
 
       <!-- New Activity Form -->
       <%= form_tag create_activity_path do %>
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">New Activity</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-10 col-md-offset-1">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">New Activity</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-10 col-md-offset-1">
 
-                <%= label_tag :name, "Description" %>
-                <%= text_field_tag :name, nil, class: "form-control" %>
+            <%= label_tag :name, "Description" %>
+            <%= text_field_tag :name, nil, class: "form-control" %>
 
+            <div class = "row">
+              <div class="col-xs-6">
+
+                <%= label_tag :length, "Duration" %>
+                <%= text_field_tag :length, nil, class: "form-control" %>
+              </div>
+
+              <div class="col-xs-6">
+                <%= label_tag :location %>
+                <%= text_field_tag :location, nil, class: "form-control" %>
+              </div>
+            </div>
+            <div class = "row">
+
+              <div class="col-xs-6">
                 <%= label_tag :day %>
                 <div class="form-group">
                   <div class="input-group date" id="activity-date" data-date-format="m/d/yyyy">
@@ -67,23 +82,22 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                   </div>
                 </div>
+              </div>
 
+              <div class="col-xs-6">
                 <%= label_tag :time %>
-                <%= text_field_tag :time, nil, class: "form-control" %>
-
-                <%= label_tag :length, "Duration" %>
-                <%= text_field_tag :length, nil, class: "form-control" %>
-
-                <%= label_tag :location %>
-                <%= text_field_tag :location, nil, class: "form-control" %>
-
+                <div class="input-group bootstrap-timepicker">
+                  <input id="timepicker" type="text" class="form-control" name="food[time]">
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= submit_tag "Submit", class: "btn btn-primary" %>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= submit_tag "Submit", class: "btn btn-primary" %>
+      </div>
       <% end %>
 
     </div>

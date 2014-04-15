@@ -12,7 +12,7 @@ $( document ).ready(function() {
   // Date picker element for user birthdate
   $( "#bday-picker" ).datetimepicker({
     pickTime: false
-  })
+  });
 
   $('#timepicker').datetimepicker({
     pickDate: false

@@ -84,9 +84,9 @@
               </div>
               <div class="col-xs-5">
                 <%= label_tag :time %>
-                <div class="input-group date">
-                  <input id="timepicker" type="text" class="form-control" name="time">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                <div class="input-group date" id="timepicker" >
+                  <%= text_field_tag :time, nil, class: "form-control", readonly: true %>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
               </div>
             </div>

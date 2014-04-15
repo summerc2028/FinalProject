@@ -19,27 +19,27 @@
 						<thead>
 							<tr>
 								<th>Name</th>
+								<th>Date</th>
 								<th>Time</th>
-								<th>Location</th>
-								<th>Length</th>
+								<th>Calories Burned</th>
 							</tr>
 						</thead>
 						<tbody>
 							<% @user.exercises.each do |activity| %>
 								<tr>
-							    	<td>
-						      			<%= link_to activity.name, show_activity_path(username: params[:username], id: activity.id) %>
-						      		</td>
-						      		<td>
-						      			<%= activity.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
-						      		</td>
-						      		<td>
-						      			<%= activity.location %>
-						      		</td>
-						      		<td>
-						      			<%= activity.length %>
-						      		</td>
-							    </tr>
+							    <td>
+				      			<%= link_to activity.name, show_activity_path(username: params[:username], id: activity.id) %>
+				      		</td>
+									<td>
+										<%= date_for activity %>
+									</td>
+				      		<td>
+				      			<%= activity.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
+				      		</td>
+				      		<td>
+				      			<%= activity.calories %>
+				      		</td>
+							  </tr>
 							<% end %>
 						</tbody>
 					</table>

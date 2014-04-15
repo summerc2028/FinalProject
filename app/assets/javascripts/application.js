@@ -17,7 +17,5 @@
 //= require bootstrap.min
 //= require jquery-tablesorter
 //= require turbolinks
-//= require jsapi
-//= require chartkick
 //= require moment
 //= require bootstrap-datetimepicker

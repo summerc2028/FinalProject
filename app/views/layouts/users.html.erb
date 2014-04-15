@@ -14,11 +14,13 @@
       <ul class="nav nav-stacked" id ="sidebar">
         <%= gravatar_for(@user) %>
 
-        <li class="<%= is_active 'show' %>"><%= link_to "My Profile", usernames_path(current_user.username) if current_user %></li>
-        <li class="<%= is_active 'show_day' %>"><%= link_to "My Activity", show_day_path(current_user.username) %></li>
-        <li class="<%= is_active 'calendar' %>"><%= link_to "My Calendar", calendar_path(current_user.username) if current_user %></li>
-        <li class="<%= is_active 'exercise_food' %>"><%= link_to "My Exercise and Food", exercise_food_path(current_user.username) %></li>
-        <li class="<%= is_active 'settings' %>"><%= link_to "My Account Settings", settings_path(current_user.username) %></li>
+        <li class="<%= is_active 'users', 'show' %>">
+          <%= link_to "My Profile", usernames_path(current_user.username) if current_user %></li>
+        <li class="<%= is_active 'users', 'show_day' %>  <%= is_active 'activities', 'show'%>">
+          <%= link_to "My Activity", show_day_path(current_user.username) %></li>
+        <li class="<%= is_active 'users', 'calendar' %>"><%= link_to "My Calendar", calendar_path(current_user.username) if current_user %></li>
+        <li class="<%= is_active 'users', 'exercise_food' %>"><%= link_to "My Exercise and Food", exercise_food_path(current_user.username) %></li>
+        <li class="<%= is_active 'users', 'settings' %>"><%= link_to "My Account Settings", settings_path(current_user.username) %></li>
       </ul>
     </div>
 

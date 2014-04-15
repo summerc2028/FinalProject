@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140415231427) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "calories"
+    t.integer  "Calories"
   end
 
   create_table "foods", force: true do |t|

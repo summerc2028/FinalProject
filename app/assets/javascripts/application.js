@@ -19,3 +19,5 @@
 //= require bootstrap-timepicker
 //= require jquery-tablesorter
 //= require turbolinks
+//= require jsapi
+//= require chartkick

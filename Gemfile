@@ -18,6 +18,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem "watu_table_builder", :require => "table_builder"
 gem 'jquery-tablesorter'
 gem 'jquery-turbolinks'
+gem 'chartkick'
 
 group :doc do
   gem 'sdoc', require: false

@@ -13,6 +13,9 @@ $( document ).ready(function() {
   $( "#bday-picker" ).datetimepicker({
     pickTime: false
   });
+  $("#bday-picker-icon").click(function(e){
+      $("#bday-picker").data("DateTimePicker").setMaxDate(new Date());
+    });
 
   $('#timepicker').datetimepicker({
     pickDate: false
@@ -82,11 +85,14 @@ $( document ).ready(function() {
     $('#edit-profile').hide();
     $('#user-name').replaceWith("<td class='table-input' id='user-name'><input class='form-control' type='text' name='fname' value='"+fname+"'/><input class='form-control' type='text' name='lname' value='"+lname+"'/></td>");
     $('#user-gender').replaceWith('<td class="table-input" id="user-gender"><div class="btn-group" data-toggle="buttons"><label class="btn btn-primary"><input type="radio" name="gender" id="male" value="Male"> Male</label><label class="btn btn-primary"><input type="radio" name="gender" id="female" value="Female"> Female</label></div></td>');
-    $('#user-bdate').replaceWith("<td class='table-input' id='user-bdate'><input class='form-control datepicker' type='text' name='birthdate' readonly='readonly' value='"+bdate+"'/></td>");
+    $('#user-bdate').replaceWith("<td class='table-input' id='user-bdate'><div class='input-group date' id='gen_cal'><input class='form-control' type='text' name='birthdate' readonly='readonly'/><span class='input-group-addon'><i class='glyphicon glyphicon-calendar'></i></span></div></td>");
     $('#user-height').replaceWith("<td class='table-input' id='user-height'><input class='form-control' type='text' name='height' value='"+height+"'/></td>");
     $('#user-weight').replaceWith("<td class='table-input' id='user-weight'><input class='form-control' type='text' name='weight' value='"+weight+"'/></td>");
+    $('#gen_cal').datetimepicker({pickTime: false });
+    $('#gen_cal').data("DateTimePicker").setDate(bdate);
 
-    $('#Act_Cancel').click(function(){
+
+      $('#Act_Cancel').click(function(){
       $('#edit-profile').show();
       $('#user-name').replaceWith("<td id='user-name'>"+fname+" "+lname+"</td>");
       $('#user-gender').replaceWith("<td id='user-gender'>"+gender+"</td>");
@@ -95,12 +101,7 @@ $( document ).ready(function() {
       $('#user-weight').replaceWith("<td id='user-weight'>"+weight+"</td>");
       $('#Act_Cancel').remove();
       $('#Act_Sub').remove();
-    });
-
-    // Init calendar activity creation modals
-    $( ".datepicker" ).datetimepicker({
-      pickTime: false
-    });
+      });
   });
 
 

@@ -68,6 +68,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def destroy
+    User.find_by_username(params[:username]).destroy
+    redirect_to root_url
+  end
+
   private
 
     def user_params

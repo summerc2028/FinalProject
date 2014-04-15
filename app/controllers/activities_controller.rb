@@ -9,8 +9,7 @@ class ActivitiesController < ApplicationController
 
   def create
     @user = User.find_by_username(params[:username])
-    @activity = Activity.new(activity_params)
-    @activity.update_attribute :user_id, @user.id
+    @activity = @user.activities.new(activity_params)
     if @activity.save
       flash[:success] = "Activity Successfully Added!"
       redirect_to calendar_path(@user.username)

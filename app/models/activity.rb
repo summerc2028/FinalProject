@@ -1,4 +1,6 @@
 class Activity < ActiveRecord::Base
+  belongs_to :user, validate: true
+
   default_scope -> { order('time ASC') }
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -8,8 +10,6 @@ class Activity < ActiveRecord::Base
   validates :length, presence: true, format: { with: VALID_LENGTH_REGEX }
   validates :location, presence: true, length: { maximum: 16 }
   validate :user_id_exists
-
-  belongs_to :user, autosave: false
 
   private
 

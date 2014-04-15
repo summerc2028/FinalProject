@@ -14,12 +14,11 @@
       <ul class="nav nav-stacked" id ="sidebar">
         <%= gravatar_for(@user) %>
 
-        <li class="<%= is_active 'show'%>"><%= link_to "Profile", usernames_path(current_user.username) if current_user %></li>
-        <li class="<%= is_active 'show_day'%>"><%= link_to "Activity", show_day_path(params[:username]) %></li>
-        <li class="<%= is_active 'calendar'%>"><%= link_to "Calendar", calendar_path(current_user.username) if current_user %></li>
-        <li class="<%=is_active 'exercise_food'%>"><%= link_to "Exercise and food", exercise_food_path(params[:username]) %></li>
-
-        <li><a href="#">Settings</a></li>
+        <li class="<%= is_active 'show' %>"><%= link_to "My Profile", usernames_path(current_user.username) if current_user %></li>
+        <li class="<%= is_active 'show_day' %>"><%= link_to "My Activity", show_day_path(current_user.username) %></li>
+        <li class="<%= is_active 'calendar' %>"><%= link_to "My Calendar", calendar_path(current_user.username) if current_user %></li>
+        <li class="<%= is_active 'exercise_food' %>"><%= link_to "My Exercise and Food", exercise_food_path(current_user.username) %></li>
+        <li class="<%= is_active 'settings' %>"><%= link_to "My Account Settings", settings_path(current_user.username) %></li>
       </ul>
     </div>
 

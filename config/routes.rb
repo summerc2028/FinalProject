@@ -1,7 +1,7 @@
 FinalProject::Application.routes.draw do
 
   # Users
-  resources :users, except: [:show, :update]
+  resources :users, except: [:show, :update, :destroy]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
   match "/users/:username/update", to: "users#update", via: "post", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
@@ -9,6 +9,9 @@ FinalProject::Application.routes.draw do
   match "/users/:username/status", to: "users#update_status", via: "post", as: "update_status"
   match "/users/:username/day-view", to: "users#show_day", via: "get", as: "show_day"
   match "/users/:username/exercise_food", to: "users#exercise_food", via: "get", as: "exercise_food"
+  match "/users/:username/settings", to: "users#settings", via: "get", as: "settings"
+  match "/users/:username/destroy", to: "users#destroy", via: "delete", as: "destroy_usernames"
+
   # Sessions
   resources :sessions, only: [:create]
   match "/signin", to: "sessions#new", via: "get"
@@ -19,12 +22,12 @@ FinalProject::Application.routes.draw do
   match "/help", to: "static_pages#help", via: "get"
 
   #Foods
-  resources :foods, only: [:new, :create, :show, :index, :destroy]
+  resources :foods, only: [:create, :show, :index]
   match "/users/:username/enter_food", to: "foods#new", via: "get", as: "enter_food"
   match "/users/:username/remove_food", to: "foods#destroy", via: "delete"
   match "/users/:username/update_food", to: "foods#update", via: "get"
-  
- 
+
+
   #Activities
   resources :activities, only: [:index]
   match "/users/:username/enter_activity", to: "activities#new", via: "get", as: "new_activity"
@@ -35,7 +38,7 @@ FinalProject::Application.routes.draw do
 
 
   #Exercises
-  resources :exercises, only: [:new, :create, :show, :index, :destroy]
+  resources :exercises, only: [:create, :show, :index]
   match "/users/:username/enter_exercise", to: "exercises#new", via: "get", as: "enter_exercise"
   match "/users/:username/remove_exercise", to: "exercises#destroy", via: "delete"
   match "/users/:username/update_exercise", to: "exercises#update", via: "get"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415222720) do
+ActiveRecord::Schema.define(version: 20140415224912) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140415222720) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "Calories"
+    t.integer  "calories"
   end
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id", unique: true

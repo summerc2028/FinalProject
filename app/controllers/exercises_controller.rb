@@ -13,7 +13,7 @@ class ExercisesController < ApplicationController
     @exercise = @user.exercises.new(exercise_params)
     if @exercise.save
       flash[:success] = "Exercise Successfully Added!"
-      redirect_to calendar_path(@user.username)
+      redirect_to exercise_food_path(@user.username)
     else
       render 'new'
     end
@@ -35,7 +35,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find_by_id(params[:id])
     @exercise.update_attributes(activity_params)
     if @exercise.save
-      redirect_to show_activity_path(username: @user.username, id: @activity.id) #Needs to be changed to exercise path
+      redirect_to show_exercise_path(username: @user.username, id: @exercise.id) #Needs to be changed to exercise path
     else
       flash.now[:danger] = "Error: Failed to update exercise"
       render 'show'

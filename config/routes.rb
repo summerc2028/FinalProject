@@ -41,9 +41,10 @@ FinalProject::Application.routes.draw do
   #Exercises
   resources :exercises, only: [:create, :show, :index]
   match "/users/:username/enter_exercise", to: "exercises#new", via: "get", as: "enter_exercise"
-  match "/users/:username/remove_exercise", to: "exercises#destroy", via: "delete"
-  match "/users/:username/update_exercise", to: "exercises#update", via: "get"
-
+  match "/users/:username/remove_exercise", to: "exercises#destroy", via: "get", as: "delete_exercise"
+  match "/users/:username/update_exercise", to: "exercises#update", via: "post", as: "update_exercise"
+ match "/users/:username/create_exercise", to: "foods#create", via: "post", as: "create_exercise"
+  match "/users/:username/exercise_item/:id", to: "foods#show", via: "get", as: "show_exercise"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

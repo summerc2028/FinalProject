@@ -4,16 +4,16 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h1 class="page-header">Exercise Information</h1>
-      <%= form_for(@exercise) do |f| %>
+      <%= form_tag create_exercise_path(params[:username]) do %>
       <%= render 'application/exercise_error_messages' %>
       <div class="col-xs-5">
-        <%= f.label :name, "Exercise description"%>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= label_tag :name, "Exercise description"%>
+        <%= text_field_tag :name, nil, class: "form-control" %>
       </div>
       <div class="col-xs-5">
-        <%= f.label :length, "Length"%>
+        <%= label_tag :length, "Length"%>
         <div class="input-group">
-          <%= f.text_field :length, class: "form-control" %>
+          <%= text_field_tag :length,nil, class: "form-control" %>
           <span class="input-group-addon">minutes</span>
         </div>
       </div>
@@ -28,13 +28,13 @@
       </div>
 
       <div class="col-xs-5">
-        <%= f.label :time %>
+        <%= label_tag :time %>
         <div class="input-group bootstrap-timepicker">
           <input id="timepicker" type="text" class="form-control" name="exercise[time]">
         </div>
       </div>
       <div class="col-xs-12">
-        <%= f.submit "Save", class: "btn btn-large btn-primary", id: "create-exercise" %>
+        <%= submit_tag "Save", class: "btn btn-large btn-primary", id: "create-exercise" %>
       </div>
       <% end %>
     </div>

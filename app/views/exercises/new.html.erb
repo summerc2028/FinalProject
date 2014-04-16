@@ -7,14 +7,14 @@
       <%= form_tag create_exercise_path(params[:username]) do %>
       <%= render 'application/exercise_error_messages' %>
       <div class="col-xs-5">
-        <%= label_tag :name, "Exercise description"%>
+        <%= label_tag :name, "Exercise Description"%>
         <%= text_field_tag :name, nil, class: "form-control" %>
       </div>
       <div class="col-xs-5">
-        <%= label_tag :length, "Length"%>
+        <%= label_tag :calories, "Calories"%>
         <div class="input-group">
-          <%= text_field_tag :length,nil, class: "form-control" %>
-          <span class="input-group-addon">minutes</span>
+          <%= text_field_tag :calories, nil, class: "form-control" %>
+          <span class="input-group-addon">calories</span>
         </div>
       </div>
       <div class="col-xs-5">

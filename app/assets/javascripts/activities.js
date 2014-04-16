@@ -12,9 +12,11 @@ $( document ).ready(function() {
 		$('#del-activity').hide();
 		$('#Act_Desc').replaceWith("<td class='table-input' id='Act_Desc'><input class='form-control' type='text' name='name' value='"+desc+"'/></td>");
 		$('#Act_Loc').replaceWith("<td class='table-input' id='Act_Loc'><input class='form-control' type='text' name='location' value='"+loc+"'/></td>");
-		$('#Act_Date').replaceWith("<td class='table-input' id='Act_Date'><input class='form-control datepicker' type='text' name='day' readonly='readonly' value='"+date+"'/></td>");
+		$('#Act_Date').replaceWith("<td class='table-input' id='Act_Date'><div class='input-group date' id='gen_cal'><input class='form-control' type='text' name='day' readonly='readonly'/><span class='input-group-addon'><i class='glyphicon glyphicon-calendar'></i></span></div></td>");
 		$('#Act_Time').replaceWith("<td class='table-input' id='Act_Time'><input class='form-control' type='text' name='time' value='"+time+"'/></td>");
 		$('#Act_Dur').replaceWith("<td class='table-input' id='Act_Dur'><input class='form-control' type='text' name='length' value='"+dur+"'/></td>");
+		$('#gen_cal').datetimepicker({pickTime: false });
+    	$('#gen_cal').data("DateTimePicker").setDate(date);
 
 		$('#Act_Cancel').click(function(){
 			$('#edit-activity').show();
@@ -26,12 +28,6 @@ $( document ).ready(function() {
 			$('#Act_Dur').replaceWith("<td id='Act_Dur'>"+dur+"</td>");
 			$('#Act_Cancel').remove();
 			$('#Act_Sub').remove();
-		});
-
-		// Init calendar activity creation modals
-		$( ".datepicker" ).datetimepicker({
-			pickTime: false
-			//todayHighlight: true
 		});
 	});
 

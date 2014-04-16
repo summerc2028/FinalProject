@@ -8,9 +8,9 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Recent Exercises
-					<%= link_to enter_exercise_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New exercise" do %>
-					<span class="glyphicon glyphicon-plus glyph-button"></span>
-					<% end %>
+					<button id="new-exercise" class="btn btn-default" title="New Exercise" data-toggle="modal" data-target="#new-exercise-modal">
+						<span class="glyphicon glyphicon-plus glyph-button"></span>
+					</button>
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -19,27 +19,27 @@
 						<thead>
 							<tr>
 								<th>Name</th>
+								<th>Date</th>
 								<th>Time</th>
-								<th>Location</th>
-								<th>Length</th>
+								<th>Calories Burned</th>
 							</tr>
 						</thead>
 						<tbody>
-							<% @user.exercises.each do |activity| %>
+							<% @user.exercises.reverse![0..9].each do |exercise| %>
 								<tr>
 							    	<td>
-						      			<%= link_to activity.name, show_activity_path(username: params[:username], id: activity.id) %>
+				      					<%= link_to exercise.name, show_exercise_path(username: params[:username], id: exercise.id) %>
+				      				</td>
+									<td>
+										<%= date_for exercise %>
+									</td>
+						      		<td>
+						      			<%= exercise.time.strftime("%l:%M %p") %>
 						      		</td>
 						      		<td>
-						      			<%= activity.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
+						      			<%= exercise.calories %>
 						      		</td>
-						      		<td>
-						      			<%= activity.location %>
-						      		</td>
-						      		<td>
-						      			<%= activity.length %>
-						      		</td>
-							    </tr>
+								</tr>
 							<% end %>
 						</tbody>
 					</table>
@@ -53,14 +53,45 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Recent Foods
-					<%= link_to enter_food_path(params[:username]), id: "new-act", class: "btn btn-default", title: "New food item" do %>
-					<span class="glyphicon glyphicon-plus glyph-button"></span>
-					<% end %>
+					<button id="new-food" class="btn btn-default" title="New Food Item" data-toggle="modal" data-target="#new-food-modal">
+						<span class="glyphicon glyphicon-plus glyph-button"></span>
+					</button>
 				</h3>
 			</div>
 
 			<div class="panel-body">
-				<h4 class="text-center">There Is No Food Information, Please Add One.</h4>
+				<% unless @user.foods.empty? %>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Calories Consumed</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @user.foods.each do |food| %>
+								<tr>
+							    <td>
+				      			<%= link_to food.name, show_food_path(username: params[:username], id: food.id) %>
+				      		</td>
+									<td>
+										<%= date_for food %>
+									</td>
+				      		<td>
+				      			<%= food.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
+				      		</td>
+				      		<td>
+				      			<%= food.calories %>
+				      		</td>
+							  </tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% else %>
+					<h4 class="text-center">There Is No Food Information, Please Add One.</h4>
+				<% end %>
 			</div>
 		</div>
 	</div>
@@ -88,4 +119,110 @@
 	</div>
 </div>
 
-<!-- <%= line_chart @user.exercises.group(:day).count %> -->
+<!-- New Exercise Modal -->
+<div class="modal fade" id="new-exercise-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- New Exercise Form -->
+			<%= form_tag create_exercise_path(params[:username]) do %>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">New Exercise</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-10 col-md-offset-1">
+						<div class = "row">
+							<div class="col-xs-5">
+								<%= label_tag :name, "Exercise Description" %>
+								<%= text_field_tag :name, nil, class: "form-control" %>
+							</div>
+							<div class="col-xs-5">
+								<%= label_tag :calories, "Calories" %>
+								<%= text_field_tag :calories, nil, class: "form-control" %>
+							</div>
+						</div>
+						<div class = "row">
+							<div class="col-xs-5">
+								<%= label_tag :day %>
+								<div class="form-group">
+									<div class="input-group date" id="exercise-date">
+										<%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
+										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-5">
+								<%= label_tag :time %>
+								<div class="input-group date" id="exercise-timepicker" >
+									<%= text_field_tag :time, nil, class: "form-control", readonly: true %>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<%= submit_tag "Submit", class: "btn btn-primary" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<!-- New Food Modal -->
+<div class="modal fade" id="new-food-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- New Food Form -->
+			<%= form_tag create_food_path(params[:username]) do %>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">New Food</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-10 col-md-offset-1">
+						<div class = "row">
+							<div class="col-xs-5">
+								<%= label_tag :name, "Food Description" %>
+								<%= text_field_tag :name, nil, class: "form-control" %>
+							</div>
+							<div class="col-xs-5">
+								<%= label_tag :calories, "Calories" %>
+								<%= text_field_tag :calories, nil, class: "form-control" %>
+							</div>
+						</div>
+						<div class = "row">
+							<div class="col-xs-5">
+								<%= label_tag :day %>
+								<div class="form-group">
+									<div class="input-group date" id="food-date">
+										<%= text_field_tag :day, nil, class: "form-control datepicker", readonly: true %>
+										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-5">
+								<%= label_tag :time %>
+								<div class="input-group date" id="food-timepicker" >
+									<%= text_field_tag :time, nil, class: "form-control", readonly: true %>
+									<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<%= submit_tag "Submit", class: "btn btn-primary" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

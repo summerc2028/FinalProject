@@ -25,19 +25,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% @user.exercises.each do |activity| %>
+							<% @user.exercises.each do |exercise| %>
 								<tr>
 							    <td>
-				      			<%= link_to activity.name, show_activity_path(username: params[:username], id: activity.id) %>
+				      			<%= link_to exercise.name, show_exercise_path(username: params[:username], id: exercise.id) %>
 				      		</td>
 									<td>
-										<%= date_for activity %>
+										<%= date_for exercise %>
 									</td>
 				      		<td>
-				      			<%= activity.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
+				      			<%= exercise.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
 				      		</td>
 				      		<td>
-				      			<%= activity.calories %>
+				      			<%= exercise.calories %>
 				      		</td>
 							  </tr>
 							<% end %>
@@ -60,7 +60,38 @@
 			</div>
 
 			<div class="panel-body">
-				<h4 class="text-center">There Is No Food Information, Please Add One.</h4>
+				<% unless @user.foods.empty? %>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Calories Burned</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @user.foods.each do |food| %>
+								<tr>
+							    <td>
+				      			<%= link_to food.name, show_food_path(username: params[:username], id: food.id) %>
+				      		</td>
+									<td>
+										<%= date_for food %>
+									</td>
+				      		<td>
+				      			<%= food.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
+				      		</td>
+				      		<td>
+				      			<%= food.calories %>
+				      		</td>
+							  </tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% else %>
+					<h4 class="text-center">There Is No Food Information, Please Add One.</h4>
+				<% end %>
 			</div>
 		</div>
 	</div>

@@ -42,6 +42,15 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by_username(params[:username])
+    @exercise = Exercise.find params[:id]
+    unless @user.exercises.include? @exercise
+      flash[:danger] = "Error: Invalid Food Item"
+      redirect_to usernames_path(params[:username])
+    end
+  end
+
   def index
   end
 

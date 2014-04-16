@@ -18,4 +18,22 @@ describe "Sign in page" do
       should have_selector('div.alert.alert-danger')
     end
   end
+
+  describe "when password is invalid" do
+    it "should display an error" do
+      fill_in "username-primary", with: "administrator"
+      fill_in "Password", with: "invalid-password"
+      click_button "sign-in-primary"
+      should have_selector('div.alert.alert-danger')
+    end
+  end
+
+  describe "when credentials are valid" do
+    it "should display an error" do
+      fill_in "username-primary", with: "administrator"
+      fill_in "Password", with: "password"
+      click_button "sign-in-primary"
+      should have_selector('div.alert.alert-danger')
+    end
+  end
 end

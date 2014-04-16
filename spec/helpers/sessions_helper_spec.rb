@@ -59,7 +59,7 @@ describe SessionsHelper do
       #   fill_in "Password", with: "password"
       #   click_button "Sign In"
       # end
-      visit signin_path
+      # visit signin_path
       it { should have_content("Rememeber me") }
       it { should have_selector('div.alert.alert-danger') }
     end

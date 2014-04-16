@@ -60,8 +60,12 @@ describe ActivitiesController do
   end
 
   describe "#update" do
-      it do
+    it "responds to PUT" do
+      put :update, :id => "anyid"
+      expect(response.body).to eq "update called"
+    end
 
-      end
-  end
+    it "requires the :id parameter" do
+      expect { put :update }.to raise_error(ActionController::RoutingError)
+    end
 end

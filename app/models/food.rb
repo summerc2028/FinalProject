@@ -1,7 +1,7 @@
 class Food < ActiveRecord::Base
 	belongs_to :user, validate:true
 
-	default_scope -> { order('date ASC') }
+	default_scope -> { order('day ASC') }
 
   validates :name, presence: true, length: { maximum: 50 }
 	validates :day, presence: true

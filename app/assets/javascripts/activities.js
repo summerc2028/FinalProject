@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 
-	// Toggle form for activity update
+	/* Used To Modify form to allow updating of Activity information.
+		Replaces table cells with input fields to allow user to update information */
 	$('#edit-activity').click(function(){
 		var desc = $('#Act_Desc').html();
 		var loc = $('#Act_Loc').html();
@@ -18,6 +19,8 @@ $( document ).ready(function() {
 		$('#gen_cal').datetimepicker({pickTime: false });
     	$('#gen_cal').data("DateTimePicker").setDate(date);
 
+    	/* Used to cancel update operations and return the form to original values 
+    		Does not modify information in the database */
 		$('#Act_Cancel').click(function(){
 			$('#edit-activity').show();
 			$('#del-activity').show();

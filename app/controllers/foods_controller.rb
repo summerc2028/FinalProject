@@ -44,6 +44,7 @@ class FoodsController < ApplicationController
     @food = Food.find_by_id(params[:id])
     @food.update_attributes(food_params)
     if @food.save
+      flash[:success] = "Food Successfully Saved!"
       redirect_to show_food_path(username: @user.username, id: @food.id)
     else
       flash.now[:danger] = "Error: Failed to update food"

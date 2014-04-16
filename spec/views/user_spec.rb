@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pp'
 
 describe "Sign Up Page" do
   subject { page }
@@ -19,12 +20,11 @@ describe "Sign Up Page" do
         fill_in "user_fname", with: "TestFName"
         fill_in "user_lname", with: "TestLName"
         page.find("#user_gender_male").click
-        page.find("#bday-picker-icon").click
-        page.find("#bday-picker-icon").click
+        fill_in "user_birthdate", with: "04/16/2014"
         fill_in "user_height", with: user.height
         fill_in "user_weight", with: user.weight
-        fill_in "user_username", with: user.username + rand(10000).to_s
-        fill_in "user_email", with: rand(10000).to_s + user.email
+        fill_in "user_username", with: "TestFName" + rand(100000).to_s
+        fill_in "user_email", with: "TestFName" + rand(100000).to_s + "@osu.edu"
         fill_in "user_password", with: user.password
         fill_in "user_password_confirmation", with: user.password_confirmation
         click_button "create-acc"

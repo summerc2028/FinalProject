@@ -20,19 +20,19 @@
       <tbody>
         <tr>
           <td><b>Description:</b></td>
-          <td id="Exer_Desc"><%= @exercise.name %></td>
+          <td id="Exercise_Desc"><%= @exercise.name %></td>
         </tr>
         <tr>
           <td><b>Calories:</b></td>
-          <td id="Exer_Cal"><%= @exercise.calories %></td>
+          <td id="Exercise_Cal"><%= @exercise.calories %></td>
         </tr>
         <tr>
           <td><b>Date:</b></td>
-          <td id="Exer_Date"><%= date_for @exercise %></td>
+          <td id="Exercise_Date"><%= date_for @exercise %></td>
         </tr>
         <tr>
           <td><b>Time:</b></td>
-          <td id="Exer_Time"><%= @exercise.time.strftime("%l:%M %p") %></td>
+          <td id="Exercise_Time"><%= @exercise.time.strftime("%l:%M %p") %></td>
         </tr>
       </tbody>
     </table>

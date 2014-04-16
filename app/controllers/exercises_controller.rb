@@ -1,13 +1,16 @@
 class ExercisesController < ApplicationController
   layout "layouts/users"
 
+  # Checks correct user and authenticates 
   before_filter :authenticate
   before_filter :correct_user
 
+  # Generates new Exercise form
   def new
     @exercise = Exercise.new
   end
 
+  #Creates a new Exercise
   def create
     @user = User.find_by_username(params[:username])
     @exercise = @user.exercises.new(exercise_params)
@@ -19,6 +22,7 @@ class ExercisesController < ApplicationController
     end
   end
 
+  # Removes an ecercise from database
   def destroy
     @user = User.find_by_username(params[:username])
     @exercise = Exercise.find params[:id]
@@ -32,6 +36,7 @@ class ExercisesController < ApplicationController
     end
   end
 
+  #Updates exercise in database
   def update
     @exercise = Exercise.find_by_id(params[:id])
     @exercise.update_attributes(exercise_params)
@@ -44,6 +49,7 @@ class ExercisesController < ApplicationController
     end
   end
 
+   # Supplies information to display Exercises
   def show
     @user = User.find_by_username(params[:username])
     @exercise = Exercise.find params[:id]
@@ -58,10 +64,12 @@ class ExercisesController < ApplicationController
 
   private
 
+  # Paramenters for an exercise
   def exercise_params
     params.permit(:name, :day, :time, :calories)
   end
 
+ # Authenticate user is signed in
   def authenticate
     unless signed_in?
       flash.now[:danger] = 'Cannot Add Exercise, Please Sign In!'
@@ -69,6 +77,7 @@ class ExercisesController < ApplicationController
     end
   end
 
+  # Check the correct user is accesing information
   def correct_user
     @user = User.find_by_username(params[:username])
     redirect_to(root_path) unless current_user?(@user)

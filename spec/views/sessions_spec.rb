@@ -4,36 +4,42 @@ describe "Sign in page" do
 
   subject { page }
 
-  let(:user) { FactoryGirl.create(:user, username: "administrator", password: "password", password_confirmation: "passoword") }
-  before { visit signin_path }
+  describe "signin" do
+    before { visit signin_path }
 
-  it { should have_content("Sign In") }
-  it { should have_content("Remember me") }
+    describe "with invalid credentials" do
+      before { click_button "sign-in-primary" }
 
-  describe "when username is invalid" do
-    it "should display an error" do
-      fill_in "username-primary", with: "invalid-name"
-      fill_in "Password", with: "password"
-      click_button "sign-in-primary"
-      should have_selector('div.alert.alert-danger')
+      it { should have_title('Sign In') }
+      it { should have_selector('div.alert.alert-danger') }
+
+      describe "after visiting another page" do
+        before { click_link "Home" }
+        it { should_not have_selector('div.alert.alert-danger') }
+      end
     end
-  end
 
-  describe "when password is invalid" do
-    it "should display an error" do
-      fill_in "username-primary", with: "administrator"
-      fill_in "Password", with: "invalid-password"
-      click_button "sign-in-primary"
-      should have_selector('div.alert.alert-danger')
-    end
-  end
+    describe "with valid information" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "username-primary", with: user.username
+        fill_in "password-primary", with: user.password
+        click_button "sign-in-primary"
+      end
 
-  describe "when credentials are valid" do
-    it "should display an error" do
-      fill_in "username-primary", with: "administrator"
-      fill_in "Password", with: "password"
-      click_button "sign-in-primary"
-      should have_selector('div.alert.alert-danger')
+      it { should have_title(user.fname) }
+      it { should have_link('My Profile', href: usernames_path(user.username)) }
+      it { should have_link('My Activity', href: show_day_path(user.username)) }
+      it { should have_link('My Calendar', href: calendar_path(user.username)) }
+      it { should have_link('My Exercise and Food', href: exercise_food_path(user.username)) }
+      it { should have_link('My Account Settings', href: settings_path(user.username)) }
+      it { should have_link('Sign Out', href: signout_path) }
+      it { should_not have_link('Sign in', href: signin_path) }
+
+      describe "followed by signout" do
+        before { click_link "Sign Out" }
+        it { should have_button('Sign In') }
+      end
     end
   end
 end

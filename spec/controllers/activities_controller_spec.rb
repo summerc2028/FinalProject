@@ -33,8 +33,9 @@ describe ActivitiesController do
 
 
   describe "#new" do
+      render_views
       it "renders the new view" do
-        get :new
+        get :new, username: user.username
         response.should render_template :new
       end
   end
@@ -61,11 +62,12 @@ describe ActivitiesController do
 
   describe "#update" do
     it "responds to PUT" do
-      put :update, :id => "anyid"
-      expect(response.body).to eq "update called"
+      put :update, username: user.username, :id => activity.id
+      response.should be_success
     end
 
     it "requires the :id parameter" do
       expect { put :update }.to raise_error(ActionController::RoutingError)
     end
+  end
 end

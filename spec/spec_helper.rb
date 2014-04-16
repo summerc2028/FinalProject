@@ -42,4 +42,5 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Capybara::DSL
+  config.render_views
 end

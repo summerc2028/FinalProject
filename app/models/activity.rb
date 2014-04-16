@@ -1,8 +1,11 @@
 class Activity < ActiveRecord::Base
+  # Relationships
   belongs_to :user, validate: true
 
+  # Defines the ordering of activities. in this case they are ordered by time ascending
   default_scope -> { order('time ASC') }
 
+  # Define all validations for data
   validates :name, presence: true, length: { maximum: 50 }
   validates :day, presence: true
   validates :time, presence: true
@@ -13,6 +16,7 @@ class Activity < ActiveRecord::Base
 
   private
 
+    # Private method to determine if a user id exists in the database
     def user_id_exists
       begin
         User.find(self.user_id)

@@ -73,6 +73,20 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def change_password
+    @user = User.find_by_username(params[:username])
+    if (@user.authenticate(params[:old_password]))
+      if @user.update_attributes(change_password_params)
+        flash.now[:success] = "Password changed successfully."
+      else
+        flash.now[:danger] = "Error: Failed to change password"
+      end
+    else
+      flash.now[:danger] = "Error: The old password is incorrect."
+    end
+    render 'settings'
+  end
+
   private
 
     def user_params
@@ -81,6 +95,10 @@ class UsersController < ApplicationController
 
     def status_params
       params.permit :status
+    end
+
+    def change_password_params
+      params.permit :password, :password_confirmation
     end
 
     def update_params

@@ -7,4 +7,8 @@ $( document ).ready(function() {
 		pickDate: false
 	});
 
+	// Tooltips
+	$( '#del-food' ).tooltip();
+	$( '#edit-food' ).tooltip();
+
 });

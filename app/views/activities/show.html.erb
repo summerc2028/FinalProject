@@ -1,6 +1,6 @@
 <% provide :title, @activity.name %>
 <h1 class="page-header">My Activity</h1>
-<%= form_tag update_activity_path %>
+<%= form_tag update_activity_path, method: "patch" %>
 <%= render 'application/activity_error_messages' %>
   <div class="panel panel-primary">
     <div class="panel-heading">

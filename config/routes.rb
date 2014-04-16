@@ -3,10 +3,10 @@ FinalProject::Application.routes.draw do
   # Users
   resources :users, except: [:show, :update, :destroy]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
-  match "/users/:username/update", to: "users#update", via: "post", as: "update_usernames"
+  match "/users/:username/update", to: "users#update", via: "patch", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
   match "/users/:username/calendar", to: "users#calendar", via: "get", as: "calendar"
-  match "/users/:username/status", to: "users#update_status", via: "post", as: "update_status"
+  match "/users/:username/status", to: "users#update_status", via: "patch", as: "update_status"
   match "/users/:username/day-view", to: "users#show_day", via: "get", as: "show_day"
   match "/users/:username/exercise_food", to: "users#exercise_food", via: "get", as: "exercise_food"
   match "/users/:username/settings", to: "users#settings", via: "get", as: "settings"
@@ -25,7 +25,7 @@ FinalProject::Application.routes.draw do
   resources :foods, only: [:index]
   match "/users/:username/enter_food", to: "foods#new", via: "get", as: "enter_food"
   match "/users/:username/remove_food", to: "foods#destroy", via: "get", as: "delete_food"
-  match "/users/:username/foods/:id/update_food", to: "foods#update", via: "post", as: "update_food"
+  match "/users/:username/foods/:id/update_food", to: "foods#update", via: "patch", as: "update_food"
   match "/users/:username/create_food", to: "foods#create", via: "post", as: "create_food"
   match "/users/:username/food_item/:id", to: "foods#show", via: "get", as: "show_food"
 
@@ -35,14 +35,14 @@ FinalProject::Application.routes.draw do
   match "/users/:username/create_activity", to: "activities#create", via: "post", as: "create_activity"
   match "/users/:username/single-view/:id", to: "activities#show", via: "get", as: "show_activity"
   match "/users/:username/remove_activity/:id", to: "activities#destroy", via: "get", as: "delete_activity"
-  match "/users/:username/activities/:id/update", to: "activities#update", via: "post", as: "update_activity"
+  match "/users/:username/activities/:id/update", to: "activities#update", via: "patch", as: "update_activity"
 
 
   #Exercises
   resources :exercises, only: [:create, :show, :index]
   match "/users/:username/enter_exercise", to: "exercises#new", via: "get", as: "enter_exercise"
   match "/users/:username/remove_exercise", to: "exercises#destroy", via: "get", as: "delete_exercise"
-  match "/users/:username/update_exercise", to: "exercises#update", via: "post", as: "update_exercise"
+  match "/users/:username/update_exercise", to: "exercises#update", via: "patch", as: "update_exercise"
   match "/users/:username/create_exercise", to: "exercises#create", via: "post", as: "create_exercise"
   match "/users/:username/exercise_item/:id", to: "exercises#show", via: "get", as: "show_exercise"
 

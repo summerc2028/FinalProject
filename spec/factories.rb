@@ -5,7 +5,9 @@ FactoryGirl.define do
     sequence(:fname) { fname }
     sequence(:lname) { lname }
     sequence(:username) { |n| "#{lname}-#{n}" }
+    username = :username
     sequence(:email) { |n| "#{fname}#{lname}-#{n}@example.com"}
+    email = :email
     height 73
     weight 140
     gender "Male"

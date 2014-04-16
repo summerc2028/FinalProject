@@ -1,7 +1,7 @@
-
 $( document ).ready(function() {
 
-	// Toggle form for food update
+	/* Used To Modify form to allow updating of profile information.
+		Replaces table cells with input fields to allow user to update information */
 	$('#edit-food').click(function(){
 		var desc = $('#Food_Desc').html();
 		var cal = $('#Food_Cal').html();
@@ -17,6 +17,8 @@ $( document ).ready(function() {
 		$('#gen_cal').datetimepicker({pickTime: false });
     	$('#gen_cal').data("DateTimePicker").setDate(date);
 
+    	/* Used to cancel update operations and return the form to original values 
+    		Does not modify information in the database */
 		$('#Food_Cancel').click(function(){
 			$('#edit-food').show();
 			$('#del-food').show();

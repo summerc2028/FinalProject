@@ -33,8 +33,9 @@ class ExercisesController < ApplicationController
 
   def update
     @exercise = Exercise.find_by_id(params[:id])
-    @exercise.update_attributes(activity_params)
+    @exercise.update_attributes(exercise_params)
     if @exercise.save
+      flash[:success] = "Exercise Successfully Saved!"
       redirect_to show_exercise_path(username: @user.username, id: @exercise.id) #Needs to be changed to exercise path
     else
       flash.now[:danger] = "Error: Failed to update exercise"

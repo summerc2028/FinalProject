@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 	validates :birthdate, timeliness: { on_or_before: lambda { Date.current }, type: :date }, allow_nil: true
 	validates :status, length: { maximum: 140 }, allow_nil: true
 	has_secure_password
-	validates :password, length: { minimum: 8 }, on: :create
+	validates :password, length: { minimum: 8 }, allow_nil: true
 	before_create :generate_token
 	validates :auth_token, uniqueness: { case_sensitive: false }
 

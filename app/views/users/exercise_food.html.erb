@@ -60,7 +60,7 @@
 			</div>
 
 			<div class="panel-body">
-				<% unless @user.foods.empty? %>
+				<% unless @day_foods.empty? %>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -71,7 +71,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% @user.foods.each do |food| %>
+							<% food_list = sort_foods(@day_foods) %>
+							<% food_list[0..9].each do |food| %>
 								<tr>
 							    <td>
 				      			<%= link_to food.name, show_food_path(username: params[:username], id: food.id) %>
@@ -100,20 +101,28 @@
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Calories Lost Today</h3>
+				<h3 class="panel-title">Net Calorie Count Today</h3>
 			</div>
 			<div class="panel-body">
-				<h4 class="text-center">No Food Or Exercise Information Available, Please Add One</h4>
+				<% unless @day_foods.empty? && @day_exercises.empty? %>
+					<h1 class="text-center"><%=calculate_net_calories(@day_foods,@day_exercises)%></h1>
+				<% else %>
+					<h4 class="text-center">No Food Or Exercise Information Available Today</h4>
+				<% end %>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Calories Lost This Week</h3>
+				<h3 class="panel-title">Calories Burned This Month</h3>
 			</div>
 			<div class="panel-body">
-				<h4 class="text-center">No Food Or Exercise Information Available, Please Add One</h4>
+				<% unless @month_exercises.empty? %>
+					<h1 class="text-center"><%= calculate_monthly_calories(@month_exercises) %></h1>
+				<% else %>
+					<h4 class="text-center">No Calorie Information Available This Month</h4>
+				<% end %>
 			</div>
 		</div>
 	</div>
@@ -140,7 +149,7 @@
 							</div>
 							<div class="col-xs-5">
 								<%= label_tag :calories, "Calories" %>
-								<%= text_field_tag :calories, nil, class: "form-control" %>
+								<%= text_field_tag :calories, nil, class: "form-control", placholder: "0"%>
 							</div>
 						</div>
 						<div class = "row">
@@ -194,7 +203,7 @@
 							</div>
 							<div class="col-xs-5">
 								<%= label_tag :calories, "Calories" %>
-								<%= text_field_tag :calories, nil, class: "form-control" %>
+								<%= text_field_tag :calories, nil, class: "form-control", placholder:"0" %>
 							</div>
 						</div>
 						<div class = "row">

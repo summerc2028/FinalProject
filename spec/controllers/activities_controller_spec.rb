@@ -1,34 +1,63 @@
 require 'spec_helper'
 
-describe ActivitiesController do
+class ApplicationController < ActionController::Base
+    class AccessDenied < StandardError; end
 
-    describe "GET #new" do
-        it "assigns a new Activity to @activity"
-        Activity = Activity.new
-        Activity.new.should == true
+    rescue_from AccessDenied, :with => :access_denied
+
+    private
+    def access_denied
+        redirect_to "/401.html"
     end
+end
 
-    describe "POST #create" do
-        context "with valid attributes" do
-            it "saves the new activity in the database"
-            it "redirects to the calendar page"
-        end
+describe ApplicationController do
+  controller do
+    def index
+      raise ApplicationController::AccessDenied
+  end
+end
 
-        context "with invalid attributes" do
-            it "does not save the new activity in the database"
-            it "re-renders the :new template"
-        end
+describe "handling AccessDenied exceptions" do
+    it "redirects to the /401.html page" do
+      get :index
+      expect(response).to redirect_to("/401.html")
+  end
+end
+
+describe "#create" do 
+    it "creates a new activity" do
+    
+
+
     end
+end
 
-    describe "GET #index" do
-        it "populates an array of activities"
-        it "renders the :index view"
-    end
+describe "#show" do
+    it 
 
-    describe "GET #show" do
-    it "assigns the requested activity to @activity"
-    it "renders the :show template"
     end
+end
+
+describe "#destroy" do
+    it 
+
+    end
+end
+
+
+describe "#new" do
+    it 
+
+    end
+end
+
+describe "#update" do
+    it 
+
+    end
+end
+
 
 
 end

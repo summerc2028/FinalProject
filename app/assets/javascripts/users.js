@@ -1,46 +1,38 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
-
 $( document ).ready(function() {
 
-  //
-  $('#timepicker').datetimepicker({
-    pickDate: false
-  });
-
+  //Datepicker and Timepicker for exerceses
   $('#exercise-timepicker').datetimepicker({
     pickDate: false
   });
+    $("#exercise-date").datetimepicker({
+    pickTime: false
+  });
 
+  //Datepicker and Timepicker for foods
   $('#food-timepicker').datetimepicker({
     pickDate: false
+  });
+  $( "#food-date" ).datetimepicker({
+    pickTime: false
   });
 
   // Date picker element for user birthdate
   $( "#bday-picker" ).datetimepicker({
     pickTime: false
   });
+  //Ensures you can't pick a future date as a birthday
   $("#bday-picker-icon").click(function(e){
       $("#bday-picker").data("DateTimePicker").setMaxDate(new Date());
     });
-
+  
+  //Datepicker and Timepicker for activities
   $('#timepicker').datetimepicker({
     pickDate: false
   });
-
-  // Init calendar activity, exercise and food creation modals
   $( "#activity-date" ).datetimepicker({
     pickTime: false
   });
 
-  $( "#exercise-date" ).datetimepicker({
-    pickTime: false
-  });
-
-  $( "#food-date" ).datetimepicker({
-    pickTime: false
-  });
   // Remove the add button functionality from .notmonth
   $( ".notmonth .cal-add-button" ).addClass("no-add-button");
   $( ".notmonth .cal-add-button" ).removeClass("cal-add-button");
@@ -89,7 +81,9 @@ $( document ).ready(function() {
   // Sorting of user index
   $("#userTable").tablesorter();
 
-  // Edit user profile
+  /* Used to edit the user profile. 
+      Removes the generic text fields and replaces with input fields to allow updating information
+      If saved information will be modified in the database */
   $('#edit-profile').click(function(){
     var fname = $('#user-name').html().split(" ")[0];
     var lname = $('#user-name').html().split(" ")[1];
@@ -107,7 +101,8 @@ $( document ).ready(function() {
     $('#gen_cal').datetimepicker({pickTime: false });
     $('#gen_cal').data("DateTimePicker").setDate(bdate);
 
-
+      /* Used to cancel update operations and return the form to original values 
+        Does not modify information in the database */
       $('#Act_Cancel').click(function(){
       $('#edit-profile').show();
       $('#user-name').replaceWith("<td id='user-name'>"+fname+" "+lname+"</td>");
@@ -119,6 +114,4 @@ $( document ).ready(function() {
       $('#Act_Sub').remove();
       });
   });
-
-
 });

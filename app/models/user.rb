@@ -1,11 +1,14 @@
 class User < ActiveRecord::Base
+	# Relationships
 	has_many :activities, dependent: :destroy, validate: true
 	has_many :exercises, dependent: :destroy, validate: true
 	has_many :foods, dependent: :destroy, validate: true
 
+	#Before information is stored the email and username are converted to all lowercase
 	before_save { email.downcase! }
 	before_save { username.downcase! }
 
+	# Define all validations for data
 	validates :fname, presence: true, length: { maximum: 50 }
 	validates :lname, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -23,11 +26,12 @@ class User < ActiveRecord::Base
 	validates :auth_token, uniqueness: { case_sensitive: false }
 
 	private
-
+		# Defines a randlomy generated secure token
 		def User.new_auth_token
-    	SecureRandom.urlsafe_base64
-  	end
+    		SecureRandom.urlsafe_base64
+  		end
 
+  		# Generates a token for the user
 		def generate_token
 			begin
 				self.auth_token = User.new_auth_token

@@ -1,5 +1,5 @@
 require 'spec_helper'
-
-describe name_goes_here do
+require 'ExercisesController'
+describe ExercisesController do
 
 end

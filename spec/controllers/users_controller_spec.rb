@@ -1,5 +1,6 @@
 require 'spec_helper'
+require 'UsersController'
 
-describe name_goes_here do
+describe UsersController do
 
 end

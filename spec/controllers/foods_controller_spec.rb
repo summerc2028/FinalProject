@@ -1,5 +1,6 @@
 require 'spec_helper'
+require 'FoodsController'
 
-describe name_goes_here do
+describe FoodsController do
 
 end

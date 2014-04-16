@@ -1,5 +1,6 @@
 require 'spec_helper'
+require 'ApplicationController'
 
-describe name_goes_here do
+describe ApplicationController do
 
 end

@@ -1,5 +1,6 @@
 require 'spec_helper'
+require 'SessionsController'
 
-describe name_goes_here do
+describe SessionsController do
 
 end

@@ -1,5 +1,6 @@
 require 'spec_helper'
+require 'StaticPagesController'
 
-describe name_goes_here do
+describe StaticPagesController do
 
 end

@@ -1,5 +1,6 @@
 require 'spec_helper'
+require 'ActivitiesController'
 
-describe name_goes_here do
+describe ActivitiesController do
 
 end

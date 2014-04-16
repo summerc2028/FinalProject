@@ -22,6 +22,10 @@ body {
   padding-top: 51px;
 }
 
+.help-page b{
+  color: green;
+}
+
 .container-fluid {
   padding: 0px;
 }
@@ -89,4 +93,19 @@ h1 {
 
 #Exercise_Sub {
   float: right;
+}
+
+
+#footer {
+  height: 60px;
+  background-color:#DBDBC6;
+}
+
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

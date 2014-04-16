@@ -36,6 +36,7 @@ class FoodsController < ApplicationController
       redirect_to exercise_food_path(params[:username])
     else
       @food.destroy
+      flash[:success] = "Food Successfully Deleted!"
       redirect_to exercise_food_path(@user.username)
     end
   end

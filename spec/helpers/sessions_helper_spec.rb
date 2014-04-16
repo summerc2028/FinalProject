@@ -12,35 +12,56 @@ require 'spec_helper'
 # end
 describe SessionsHelper do
 
-  before { visit root_path }
+  subject { page }
 
-  describe "for unsigned-in users" do
-    it "should appear signed out" do
-      expect(signed_in?).to be_false
+# Integration Tests
+  describe "on home page" do
+    before { visit root_path }
+
+    describe "for unsigned-in users" do
+      it "should appear signed out" do
+        expect(signed_in?).to be_false
+      end
+
+      it "should not return a current_user" do
+        expect(current_user).to be_nil
+      end
     end
 
-    it "should not return a current_user" do
-      expect(current_user).to be_nil
+    describe "for signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        sign_in user, false
+        visit root_path
+      end
+
+      it "should appear signed in" do
+        expect(signed_in?).to be_true
+      end
+
+      it "should return the proper current_user" do
+        expect(current_user).to equal user
+      end
+
+      it "should know which user is logged in" do
+        expect(current_user? user).to be_true
+      end
     end
   end
 
-  describe "for signed-in users" do
-    let(:user) { FactoryGirl.create(:user) }
-    before do
-      sign_in user, false
-      visit root_path
-    end
+  describe "on sign in page" do
+    let(:user) { FactoryGirl.create(:user, username: "administrator", password: "password", password_confirmation: "password") }
+    # before { visit signin_path }
 
-    it "should appear signed in" do
-      expect(signed_in?).to be_true
-    end
-
-    it "should return the proper current_user" do
-      expect(current_user).to equal user
-    end
-
-    it "should know which user is logged in" do
-      expect(current_user? user).to be_true
+    describe "with invalid username" do
+      # before do
+      #   fill_in "Username", with: "username"
+      #   fill_in "Password", with: "password"
+      #   click_button "Sign In"
+      # end
+      visit signin_path
+      it { should have_content("Rememeber me") }
+      it { should have_selector('div.alert.alert-danger') }
     end
   end
 end

@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
     @food = Food.find params[:id]
     unless @user.foods.include? @food
       flash[:danger] = "Error: Invalid Food Item"
-      redirect_to usernames_path(params[:username])
+      redirect_to exercise_food_path(params[:username])
     end
   end
 
@@ -33,10 +33,10 @@ class FoodsController < ApplicationController
     @food = Food.find params[:id]
     unless @user.foods.include? @food
       flash[:danger] = "Error: Invalid Food Item"
-      redirect_to usernames_path(params[:username])
+      redirect_to exercise_food_path(params[:username])
     else
       @food.destroy
-      redirect_to usernames_path(@user.username)
+      redirect_to exercise_food_path(@user.username)
     end
   end
 

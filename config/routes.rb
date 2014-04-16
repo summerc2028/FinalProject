@@ -11,7 +11,8 @@ FinalProject::Application.routes.draw do
   match "/users/:username/exercise_food", to: "users#exercise_food", via: "get", as: "exercise_food"
   match "/users/:username/settings", to: "users#settings", via: "get", as: "settings"
   match "/users/:username/destroy", to: "users#destroy", via: "delete", as: "destroy_usernames"
-
+  match "/users/:username/change_password", to: "users#change_password", via: "patch", as: "change_password"
+  
   # Sessions
   resources :sessions, only: [:create]
   match "/signin", to: "sessions#new", via: "get"

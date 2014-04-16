@@ -1,7 +1,9 @@
 <% provide :title, "Settings" %>
 
 <h1 class="page-header">Settings</h1>
+<%= render 'application/error_messages' %>
 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#del-account-modal">Delete Account</button>
+<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#change-password-modal">Change Password</button>
 
 <!-- Delete Account Modal -->
 <div class="modal fade" id="del-account-modal">
@@ -16,6 +18,36 @@
       <div class="modal-body">
         <%= link_to "Delete", destroy_usernames_path(params[:username]), method: :delete, class: "btn btn-primary" %>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="change-password-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- "Are You Sure" Form -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Change Your Password</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag change_password_path(params[:username]), method: "patch" do %>
+        <%= label_tag :old_password %>
+        <%= password_field_tag :old_password, nil, class: "form-control" %>
+
+        <%= label_tag :password %>
+        <%= password_field_tag :password, nil, class: "form-control" %>
+
+        <%= label_tag :password_confirmation %>
+        <%= password_field_tag :password_confirmation, nil, class: "form-control" %>
+
+        <hr />
+
+        <%= submit_tag "Change Your Password", class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

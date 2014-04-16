@@ -25,21 +25,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% @user.exercises.each do |exercise| %>
+							<% @user.exercises.reverse![0..9].each do |exercise| %>
 								<tr>
-							    <td>
-				      			<%= link_to exercise.name, show_exercise_path(username: params[:username], id: exercise.id) %>
-				      		</td>
+							    	<td>
+				      					<%= link_to exercise.name, show_exercise_path(username: params[:username], id: exercise.id) %>
+				      				</td>
 									<td>
 										<%= date_for exercise %>
 									</td>
-				      		<td>
-				      			<%= exercise.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
-				      		</td>
-				      		<td>
-				      			<%= exercise.calories %>
-				      		</td>
-							  </tr>
+						      		<td>
+						      			<%= exercise.time.strftime("%l:%M %p") %>
+						      		</td>
+						      		<td>
+						      			<%= exercise.calories %>
+						      		</td>
+								</tr>
 							<% end %>
 						</tbody>
 					</table>
@@ -67,7 +67,7 @@
 								<th>Name</th>
 								<th>Date</th>
 								<th>Time</th>
-								<th>Calories Burned</th>
+								<th>Calories Consumed</th>
 							</tr>
 						</thead>
 						<tbody>

@@ -24,10 +24,10 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find params[:id]
     unless @user.exercises.include? @exercise
       flash[:danger] = "Error: Invalid exercise"
-      redirect_to usernames_path(params[:username])
+      redirect_to exercise_food_path(params[:username])
     else
       @exercise.destroy
-      redirect_to usernames_path(@user.username)
+      redirect_to exercise_food_path(@user.username)
     end
   end
 
@@ -47,7 +47,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find params[:id]
     unless @user.exercises.include? @exercise
       flash[:danger] = "Error: Invalid Food Item"
-      redirect_to usernames_path(params[:username])
+      redirect_to exercise_food_path(params[:username])
     end
   end
 

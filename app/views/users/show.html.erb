@@ -92,7 +92,7 @@
 						      			<%= link_to activity.name, show_activity_path(username: params[:username], id: activity.id) %>
 						      		</td>
 						      		<td>
-						      			<%= activity.time.strftime("%l:%M %p") %> <!-- (%I:%M) if we use 12 hr clock -->
+						      			<%= activity.time.strftime("%l:%M %p") %>
 						      		</td>
 						      		<td>
 						      			<%= activity.location %>
@@ -111,9 +111,14 @@
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Calorie Summary????</h3>
+				<h3 class="panel-title">Health Information</h3>
 			</div>
-			<p>We can put calorie stuff for today only here!</p>
+			<div>
+				<% unless @day_foods.empty? && @day_exercises.empty? %>
+					<h4 class="text-center">Your Net Calorie Count for Today is <%=calculate_net_calories(@day_foods,@day_exercises)%></h4>
+				<% else %>
+					<h4 class="text-center">No Food Or Exercise Information Available Today</h4>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>

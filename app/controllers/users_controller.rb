@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
     @day_activities = @user.activities.select { |x| x.day.eql? @date }
+    @day_foods = @user.foods.select { |x| x.day.eql? @date }
+    @day_exercises = @user.exercises.select { |x| x.day.eql? @date }
   end
 
   def show_day
@@ -63,6 +65,14 @@ class UsersController < ApplicationController
     @month = @date.strftime("%B")
     @year = @date.strftime("%Y")
   end
+
+  def exercise_food
+      @user = User.find_by_username(params[:username])
+      @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
+      @day_foods = @user.foods.select { |x| x.day.eql? @date }
+      @day_exercises = @user.exercises.select { |x| x.day.eql? @date }
+      @month_exercises = @user.exercises.select { |x| x.day.strftime("%B%Y").eql? @date.strftime("%B%Y")}
+    end
 
   def index
     @users = User.all
@@ -127,4 +137,5 @@ class UsersController < ApplicationController
         redirect_to usernames_path(current_user.username)
       end
     end
+
 end

@@ -17,4 +17,28 @@ module UsersHelper
 		current_time = Time.new
 		return activities.select {|activity| current_time.strftime("%H%M")<=activity.time.strftime("%H%M")}
 	end
+
+	def sort_foods(foods)
+		return foods.sort {|x,y| x.time.strftime("%H%M")<=>y.time.strftime("%H%M")}
+	end
+
+	def calculate_net_calories(foods,exercises)
+		total_intake = 0
+		total_burn = 0
+		foods.each do |food|
+			total_intake += food.calories
+		end
+		exercises.each do |exercise|
+			total_burn += exercise.calories
+		end
+		return total_intake-total_burn
+	end
+
+	def calculate_monthly_calories(exercises)
+		total_burn = 0
+		exercises.each do |exercise|
+			total_burn += exercise.calories
+		end
+		return total_burn
+	end
 end

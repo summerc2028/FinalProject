@@ -14,7 +14,7 @@
 
 			<hr>
 
-			<%= form_tag update_status_path(@user.username) do %>
+			<%= form_tag update_status_path(@user.username), method: "patch" do %>
 
 			<%= text_field_tag :status, nil, class: "form-control focus-clear", value: "", placeholder: "Update Status"%>
 
@@ -25,7 +25,7 @@
 		<% end %>
 	</div>
 </div>
-<%= form_tag update_usernames_path(params[:username]) %>
+<%= form_tag update_usernames_path(params[:username]), method: "patch" %>
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">

@@ -3,14 +3,15 @@ FinalProject::Application.routes.draw do
   # Users
   resources :users, except: [:show, :update, :destroy]
   match "/users/:username", to: "users#show", via: "get", as: "usernames"
-  match "/users/:username/update", to: "users#update", via: "post", as: "update_usernames"
+  match "/users/:username/update", to: "users#update", via: "patch", as: "update_usernames"
   match "/signup", to: "users#new", via: "get"
   match "/users/:username/calendar", to: "users#calendar", via: "get", as: "calendar"
-  match "/users/:username/status", to: "users#update_status", via: "post", as: "update_status"
+  match "/users/:username/status", to: "users#update_status", via: "patch", as: "update_status"
   match "/users/:username/day-view", to: "users#show_day", via: "get", as: "show_day"
   match "/users/:username/exercise_food", to: "users#exercise_food", via: "get", as: "exercise_food"
   match "/users/:username/settings", to: "users#settings", via: "get", as: "settings"
   match "/users/:username/destroy", to: "users#destroy", via: "delete", as: "destroy_usernames"
+  match "/users/:username/change_password", to: "users#change_password", via: "patch", as: "change_password"
 
   # Sessions
   resources :sessions, only: [:create]
@@ -34,8 +35,8 @@ FinalProject::Application.routes.draw do
   match "/users/:username/enter_activity", to: "activities#new", via: "get", as: "new_activity"
   match "/users/:username/create_activity", to: "activities#create", via: "post", as: "create_activity"
   match "/users/:username/single-view/:id", to: "activities#show", via: "get", as: "show_activity"
-  match "/users/:username/remove_activity/:id", to: "activities#destroy", via: "get", as: "delete_activity"
-  match "/users/:username/activities/:id/update", to: "activities#update", via: "post", as: "update_activity"
+  match "/users/:username/remove_activity/:id", to: "activities#destroy", via: "delete", as: "delete_activity"
+  match "/users/:username/activities/:id/update", to: "activities#update", via: "patch", as: "update_activity"
 
 
   #Exercises

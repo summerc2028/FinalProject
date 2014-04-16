@@ -43,6 +43,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find_by_id(params[:id])
     @activity.update_attributes(activity_params)
     if @activity.save
+      flash[:success] = "Activity Successfully Updated!"
       redirect_to show_activity_path(username: @user.username, id: @activity.id)
     else
       flash.now[:danger] = "Error: Failed to update activity"

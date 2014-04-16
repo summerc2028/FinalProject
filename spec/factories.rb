@@ -20,8 +20,28 @@ FactoryGirl.define do
     end
   end
 
-  factory :micropost do
-    content "Lorem ipsum"
-    user
+  factory :activity do
+    sequence(:name) { |n| "Activity #{n}" }
+    sequence(:day) { |n| Date.current - n }
+    sequence(:time) { |n| Time.current - n }
+    location "Home"
+    length "3:00"
+    sequence(:user_id) { |n| }
+  end
+
+  factory :exercise do
+    sequence(:name) { |n| "Exercise #{n}" }
+    sequence(:day) { |n| Date.current - n }
+    sequence(:time) { |n| Time.current - n }
+    sequence(:calories) { |n| + 1 }
+    sequence(:user_id) { |n| }
+  end
+
+  factory :food do
+    sequence(:name) { |n| "Food #{n}" }
+    sequence(:day) { |n| Date.current - n }
+    sequence(:time) { |n| Time.current - n }
+    sequence(:calories) { |n| + 1 }
+    sequence(:user_id) { |n| }
   end
 end

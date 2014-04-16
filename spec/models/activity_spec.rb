@@ -9,9 +9,9 @@ describe Activity do
                       status: "Hello", password: "password",
                       password_confirmation: "password", auth_token: "asdf1234")
 
-    @activity = Activity.new( name: "Sample Activity", day: Date.current,
+    @activity = @user.activities.new( name: "Sample Activity", day: Date.current,
                       time: Time.current, length: "4:00",
-                      location: "Sample Location", user_id: @user.id)
+                      location: "Sample Location")
   end
 
   subject { @activity }

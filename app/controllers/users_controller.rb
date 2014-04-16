@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   def change_password
     @user = User.find_by_username(params[:username])
     if (@user.authenticate(params[:old_password]))
-      if @user.update_attributes(change_password_params)
+      if !params[:password].empty? && @user.update_attributes(change_password_params)
         flash.now[:success] = "Password changed successfully."
       else
         flash.now[:danger] = "Error: Failed to change password"

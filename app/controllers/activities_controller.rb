@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
 
   before_filter :authenticate
   before_filter :correct_user
+  
   def new
     @activity = Activity.new
   end

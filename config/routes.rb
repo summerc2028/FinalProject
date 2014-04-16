@@ -12,7 +12,7 @@ FinalProject::Application.routes.draw do
   match "/users/:username/settings", to: "users#settings", via: "get", as: "settings"
   match "/users/:username/destroy", to: "users#destroy", via: "delete", as: "destroy_usernames"
   match "/users/:username/change_password", to: "users#change_password", via: "patch", as: "change_password"
-  
+
   # Sessions
   resources :sessions, only: [:create]
   match "/signin", to: "sessions#new", via: "get"
@@ -25,7 +25,7 @@ FinalProject::Application.routes.draw do
   #Foods
   resources :foods, only: [:index]
   match "/users/:username/enter_food", to: "foods#new", via: "get", as: "enter_food"
-  match "/users/:username/remove_food", to: "foods#destroy", via: "get", as: "delete_food"
+  match "/users/:username/remove_food", to: "foods#destroy", via: "delete", as: "delete_food"
   match "/users/:username/foods/:id/update_food", to: "foods#update", via: "patch", as: "update_food"
   match "/users/:username/create_food", to: "foods#create", via: "post", as: "create_food"
   match "/users/:username/food_item/:id", to: "foods#show", via: "get", as: "show_food"
@@ -35,14 +35,14 @@ FinalProject::Application.routes.draw do
   match "/users/:username/enter_activity", to: "activities#new", via: "get", as: "new_activity"
   match "/users/:username/create_activity", to: "activities#create", via: "post", as: "create_activity"
   match "/users/:username/single-view/:id", to: "activities#show", via: "get", as: "show_activity"
-  match "/users/:username/remove_activity/:id", to: "activities#destroy", via: "get", as: "delete_activity"
+  match "/users/:username/remove_activity/:id", to: "activities#destroy", via: "delete", as: "delete_activity"
   match "/users/:username/activities/:id/update", to: "activities#update", via: "patch", as: "update_activity"
 
 
   #Exercises
   resources :exercises, only: [:create, :show, :index]
   match "/users/:username/enter_exercise", to: "exercises#new", via: "get", as: "enter_exercise"
-  match "/users/:username/remove_exercise", to: "exercises#destroy", via: "get", as: "delete_exercise"
+  match "/users/:username/remove_exercise", to: "exercises#destroy", via: "delete", as: "delete_exercise"
   match "/users/:username/update_exercise", to: "exercises#update", via: "patch", as: "update_exercise"
   match "/users/:username/create_exercise", to: "exercises#create", via: "post", as: "create_exercise"
   match "/users/:username/exercise_item/:id", to: "exercises#show", via: "get", as: "show_exercise"

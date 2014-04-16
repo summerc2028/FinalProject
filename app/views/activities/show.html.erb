@@ -7,7 +7,7 @@
       <h3 class="panel-title">
         Info
         <% if current_user? User.find_by_username(params[:username]) %>
-          <%= link_to delete_activity_path(username: params[:username], id: @activity.id), id: "del-activity", class: "btn btn-default", "data-toggle" => "tooltip", title: "Delete" do %>
+          <%= link_to delete_activity_path(username: params[:username], id: @activity.id), method: "delete", id: "del-activity", class: "btn btn-default", "data-toggle" => "tooltip", title: "Delete" do %>
             <span class="glyphicon glyphicon-remove glyph-button"></span>
           <% end %>
           <button id="edit-activity" type="button" class="btn btn-default" data-toggle="tooltip" title="Edit">

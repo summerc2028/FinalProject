@@ -41,7 +41,10 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to usernames_path(@user.username)
     else
-      flash.now[:danger] = "Error: Failed to update status"
+      flash[:danger] = "Error: Failed to update status"
+      @day_activities = @user.activities.select { |x| x.day.eql? @date }
+      @day_foods = @user.foods.select { |x| x.day.eql? @date }
+      @day_exercises = @user.exercises.select { |x| x.day.eql? @date }
       render 'show'
     end
   end
@@ -53,6 +56,9 @@ class UsersController < ApplicationController
       flash[:success] = "Profile Successfully Updated!"
       redirect_to usernames_path(@user.username)
     else
+      @day_activities = @user.activities.select { |x| x.day.eql? @date }
+      @day_foods = @user.foods.select { |x| x.day.eql? @date }
+      @day_exercises = @user.exercises.select { |x| x.day.eql? @date }
       flash.now[:danger] = "Error: Failed to update profile"
       render 'show'
     end

@@ -6,10 +6,12 @@ class UsersController < ApplicationController
   before_action :correct_user,   except: [:new, :create, :show, :index]
   before_action :admin, only: [:index]
 
+  # Generates new user form
   def new
     @user = User.new
   end
 
+  # Supplies information to display user
   def show
     @user = User.find_by_username(params[:username])
     @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
@@ -18,12 +20,14 @@ class UsersController < ApplicationController
     @day_exercises = @user.exercises.select { |x| x.day.eql? @date }
   end
 
+  # Supplies information to display user information related to the current day
   def show_day
     @user = User.find_by_username(params[:username])
     @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
     @day_activities = @user.activities.select { |x| x.day.eql? @date }
   end
 
+  #Creates a new user
   def create
     @user = User.new(user_params)
     if @user.save
@@ -35,6 +39,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # Update the status pannel in user profile
   def update_status
     @user = User.find_by_username(params[:username])
     @user.update_attributes(status_params)
@@ -49,6 +54,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #Updates user information in database
   def update
     @user = User.find_by_username(params[:username])
     @user.update_attributes(update_params)
@@ -64,6 +70,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # Supply required information for calendar page
   def calendar
     @user = User.find_by_username(params[:username])
     @activities = @user.activities
@@ -72,18 +79,21 @@ class UsersController < ApplicationController
     @year = @date.strftime("%Y")
   end
 
+  # Supplies required information to the exercise_food page
   def exercise_food
       @user = User.find_by_username(params[:username])
       @date = params[:date].nil? ? Date.current : Date.parse(params[:date])
       @day_foods = @user.foods.select { |x| x.day.eql? @date }
       @day_exercises = @user.exercises.select { |x| x.day.eql? @date }
       @month_exercises = @user.exercises.select { |x| x.day.strftime("%B%Y").eql? @date.strftime("%B%Y")}
-    end
+   end
 
+   # Define variable of all users
   def index
     @users = User.all
   end
 
+  # Removes a user from database
   def destroy
     User.find_by_username(params[:username]).destroy
     redirect_to root_url
@@ -105,22 +115,27 @@ class UsersController < ApplicationController
 
   private
 
+    # Paramenters for a user form
     def user_params
       params.require(:user).permit( :fname, :lname, :username, :email, :password, :password_confirmation, :gender, :birthdate, :height, :weight, :status)
     end
 
+    # Parameters for user status
     def status_params
       params.permit :status
     end
 
+    # Parameters for changing password
     def change_password_params
       params.permit :password, :password_confirmation
     end
 
+    # Parameters required to update profile 
     def update_params
       params.permit :fname, :lname, :gender, :birthdate, :height, :weight
     end
 
+    # Redirect you if you are not signed in
     def signed_in_user
       unless signed_in?
         flash[:danger] = "Sign in to access this page"
@@ -129,6 +144,7 @@ class UsersController < ApplicationController
       end
     end
 
+    # Check the correct user is accesing information
     def correct_user
       @user = User.find_by_username params[:username]
       unless current_user? @user
@@ -137,6 +153,7 @@ class UsersController < ApplicationController
       end
     end
 
+    # Redirects you if you do not have admin privilleges
     def admin
       unless current_user.admin
         flash[:danger] = "You don't have permission to do that!"

@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   def new
   end
 
+  # Create a session for a user if credential exist if not redirects with a failure message
   def create
     user = User.find_by_username(params[:username].downcase)
     if user && user.authenticate(params[:password])
@@ -14,6 +15,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # Terminates current user session (Sign Out)
   def destroy
     sign_out
     redirect_to root_path
